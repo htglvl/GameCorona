@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 3455560776245264764}
   - component: {fileID: 3455560776245264755}
   - component: {fileID: 3455560776245264757}
+  - component: {fileID: 4616148658198519475}
   m_Layer: 8
   m_Name: PlayerCharacter 1
   m_TagString: Player
@@ -220,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565605ee87a55ff40bef5ed622e7f8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallet: 3
+  wallet: 999
   TotalEnemyDieRocket: 0
   TotalEnemyDieSuicide: 0
   TotalEnemyDieBurst: 0
@@ -228,6 +229,19 @@ MonoBehaviour:
   TotalEnemyDie: 0
   TotalDamageDealt: 0
   totalDamageTaken: 0
+--- !u!114 &4616148658198519475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3455560776245264758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b8db1650c0c3444b169ea90ef590ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectToSetActiveOnStart: {fileID: 6268396966078238240}
 --- !u!1 &3455560777161770019
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &547137087257964103
 Transform:
   m_ObjectHideFlags: 0
@@ -285,7 +299,7 @@ Transform:
   m_GameObject: {fileID: 6268396966078238240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9.062854, y: 9.062854, z: 9.062854}
+  m_LocalScale: {x: 5.700444, y: 5.700444, z: 5.700444}
   m_Children: []
   m_Father: {fileID: 3455560776245264753}
   m_RootOrder: 3
