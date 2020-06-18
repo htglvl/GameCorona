@@ -5,7 +5,7 @@ using UnityEditor;
 public class PlayerTopDownShooting : MonoBehaviour
 {
     #region Variable 
-    public bool haveSound = true;
+    public bool haveSound = true, holdOneHandTrueTwoHandFalse;
     public string sound;
     public string scopeSound = "ButtonHover";
     public string BurstSound = "Map&Buy";

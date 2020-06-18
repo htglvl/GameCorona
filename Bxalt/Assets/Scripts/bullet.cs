@@ -74,6 +74,10 @@ public class bullet : MonoBehaviour, IpooledObject
             }
         }
     }
+    private void Update()
+    {
+        transform.Rotate(0, 0, -10f);
+    }
     IEnumerator disableOnTime(float time)
     {
         yield return new WaitForSeconds(time);

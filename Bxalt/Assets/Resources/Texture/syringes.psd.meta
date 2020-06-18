@@ -1933,7 +1933,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 600
-        width: 300
+        width: 299
         height: 300
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1996,7 +1996,7 @@ TextureImporter:
         serializedVersion: 2
         x: 900
         y: 600
-        width: 300
+        width: 297
         height: 300
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2017,7 +2017,7 @@ TextureImporter:
         serializedVersion: 2
         x: 1200
         y: 600
-        width: 300
+        width: 296
         height: 300
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2099,8 +2099,8 @@ TextureImporter:
       name: mask_22
       rect:
         serializedVersion: 2
-        x: 300
-        y: 300
+        x: 299
+        y: 299
         width: 300
         height: 300
       alignment: 0
@@ -2122,7 +2122,7 @@ TextureImporter:
         serializedVersion: 2
         x: 600
         y: 300
-        width: 300
+        width: 301
         height: 300
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

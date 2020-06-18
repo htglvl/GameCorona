@@ -9,8 +9,9 @@ public class GunsAndAmmoDisplayer : MonoBehaviour
     public TextMeshProUGUI gunName, gunAmmo;
     public PlayerTopDownShooting Player;
     CameraController Camera;
-    public Image Scope, Burst, Reloading1Vien, ReloadCaBang, reloadCaBangBackground, reload1VienBackGround;
+    public Image Scope, Burst, sanitizer, soap, syring, mask, thermo, nothing, saniFore, soapFore, syringFore, MaskFore, ThermoFore, nothingFore;
     Image currentAmmoType;
+    public GameObject ImageChild;
     private float currentReloadingTime;
     bool StillAlive = true;
 
@@ -64,11 +65,8 @@ public class GunsAndAmmoDisplayer : MonoBehaviour
                 }
                 if (Player.napDanTungVienHayCaBang)
                 {
-                    Reloading1Vien.enabled = true;
-                    reload1VienBackGround.enabled = true;
-                    currentAmmoType = Reloading1Vien;
-                    ReloadCaBang.enabled = false;
-                    reloadCaBangBackground.enabled = false;
+                    updateImage(Player.sound);
+
                     if (Player.isreloadingShotgun)
                     {
                         currentReloadingTime += Time.deltaTime;
@@ -87,11 +85,7 @@ public class GunsAndAmmoDisplayer : MonoBehaviour
                 }
                 else
                 {
-                    Reloading1Vien.enabled = false;
-                    reload1VienBackGround.enabled = false;
-                    ReloadCaBang.enabled = true;
-                    reloadCaBangBackground.enabled = true;
-                    currentAmmoType = ReloadCaBang;
+                    updateImage(Player.sound);
                     if (Player.isreloading)
                     {
                         currentReloadingTime += Time.deltaTime;
@@ -118,6 +112,49 @@ public class GunsAndAmmoDisplayer : MonoBehaviour
                     StillAlive = false;
                 }
             }
+        }
+    }
+    void updateImage(string sound)
+    {
+        foreach (Image image in ImageChild.GetComponentsInChildren<Image>())
+        {
+            image.enabled = false;
+        }
+        if (sound == "sy")
+        {
+            syring.enabled = true;
+            syringFore.enabled = true;
+            currentAmmoType = syringFore;
+        }
+        else if (sound == "sani")
+        {
+            saniFore.enabled = true;
+            sanitizer.enabled = true;
+            currentAmmoType = saniFore;
+        }
+        else if (sound == "thermo")
+        {
+            thermo.enabled = true;
+            ThermoFore.enabled = true;
+            currentAmmoType = ThermoFore;
+        }
+        else if (sound == "soap")
+        {
+            soap.enabled = true;
+            soapFore.enabled = true;
+            currentAmmoType = soapFore;
+        }
+        else if (sound == "mask")
+        {
+            mask.enabled = true;
+            MaskFore.enabled = true;
+            currentAmmoType = MaskFore;
+        }
+        else
+        {
+            nothing.enabled = true;
+            nothingFore.enabled = true;
+            currentAmmoType = nothingFore;
         }
     }
 }
