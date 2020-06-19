@@ -167,8 +167,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minspeed: 10
+  Name: S
   maxspeed: 20
-  fromPlayer: 0
+  fromPlayer: 1
   damage: 12
   force: 25
   lifeTime: 3

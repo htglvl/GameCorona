@@ -50,6 +50,7 @@ MonoBehaviour:
   haveSound: 1
   holdOneHandTrueTwoHandFalse: 1
   sound: sy
+  Name: 7
   scopeSound: ButtonHover
   BurstSound: Map&Buy
   AutoTrueHayOnetapFalse: 1

@@ -5,12 +5,13 @@ using UnityEngine;
 public class bullet : MonoBehaviour, IpooledObject
 {
     public float minspeed = 5f;
+    public string Name;
     public float maxspeed = 8f;
     public bool fromPlayer = false;
     public int damage = 12;
     public float force = 1, lifeTime;
     Rigidbody2D rb2D;
-    private EnemyAttack EA;
+
     private Vector2 forceVector;
     // Start is called before the first frame update
     public void OnObjectSpawn()
@@ -27,8 +28,8 @@ public class bullet : MonoBehaviour, IpooledObject
     {
         Enemy enemy = other.GetComponent<Enemy>();
         Rigidbody2D rigid = other.GetComponent<Rigidbody2D>();
-        EA = other.GetComponent<EnemyAttack>();
-
+        EnemyAttack EA = other.GetComponent<EnemyAttack>();
+        AIBrain AI = other.GetComponent<AIBrain>();
         if (fromPlayer)
         {
             if (other.tag != "BulletFromPlayer" && other.tag != "Player" && other.tag != "Coin")
@@ -46,11 +47,15 @@ public class bullet : MonoBehaviour, IpooledObject
 
                     objectPooler.Instance.SpawnFromPool("EnemyBlood", transform.position, Quaternion.identity * Quaternion.Euler(0f, 90f, 0)).GetComponent<ParticleSystem>().Play();
                 }
+                if (AI != null)
+                {
+                    AI.GotHitBy(Name);
+                }
                 this.gameObject.SetActive(false);
             }
             if (other.tag != "Bullet")
             {
-                objectPooler.Instance.SpawnFromPool("Impact Effect", transform.position, Quaternion.identity * Quaternion.LookRotation(forceVector) * Quaternion.Euler(180f, 0f, 0)).GetComponent<ParticleSystem>().Play();
+                //objectPooler.Instance.SpawnFromPool("Impact Effect", transform.position, Quaternion.identity * Quaternion.LookRotation(forceVector) * Quaternion.Euler(180f, 0f, 0)).GetComponent<ParticleSystem>().Play();
             }
         }
         else

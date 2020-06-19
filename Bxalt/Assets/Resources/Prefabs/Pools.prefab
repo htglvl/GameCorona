@@ -44,23 +44,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: Impact Effect
-    prefab: {fileID: 5200745014960430895, guid: a22f30c16360d5741ac86be0e3890fd9,
-      type: 3}
-    size: 15
-  - tag: EnemyBlood
-    prefab: {fileID: 6414698279573614175, guid: 13e89b468fadad8448d11a1fefe0aabb,
-      type: 3}
-    size: 10
   - tag: Bullet
     prefab: {fileID: 7515158260938890713, guid: 9cf53ba88b066d643a88a6915f982990,
       type: 3}
-    size: 50
-  - tag: Rocket
-    prefab: {fileID: 7515158260938890713, guid: 8e291c369fae5e04787ea23ef54f0eed,
+    size: 10
+  - tag: BulletKT
+    prefab: {fileID: 7266690900179183461, guid: c5d6ccdca61dd364ca2ef9f2adff64ce,
       type: 3}
     size: 10
-  - tag: RCrossHair
-    prefab: {fileID: 7478512533262603527, guid: 4586bfc7fddae5e4b80735d0480a54d9,
+  - tag: BulletKTN95
+    prefab: {fileID: 4548189931867761967, guid: 611cab533bb80eb43b931d03a77bbbbe,
+      type: 3}
+    size: 10
+  - tag: BulletKTV
+    prefab: {fileID: 5286841844197323276, guid: 9f87731c9907f314f9cbdb9ef3cc2e61,
+      type: 3}
+    size: 10
+  - tag: BulletKTYT
+    prefab: {fileID: 7515158260938890713, guid: 48e1c43ac8fdad8489001d6370a41d3a,
+      type: 3}
+    size: 10
+  - tag: BulletM
+    prefab: {fileID: 3100027493920442911, guid: aefc152d2e2010f4d971486e26728169,
+      type: 3}
+    size: 10
+  - tag: BulletS
+    prefab: {fileID: 5047950315853069168, guid: a2ede64769059474ab11f49a778ebc12,
       type: 3}
     size: 10

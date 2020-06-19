@@ -363,6 +363,7 @@ MonoBehaviour:
   haveSound: 1
   holdOneHandTrueTwoHandFalse: 1
   sound: sy
+  Name: 5
   scopeSound: ButtonHover
   BurstSound: Map&Buy
   AutoTrueHayOnetapFalse: 1

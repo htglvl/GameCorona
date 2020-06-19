@@ -6,7 +6,7 @@ public class PlayerTopDownShooting : MonoBehaviour
 {
     #region Variable 
     public bool haveSound = true, holdOneHandTrueTwoHandFalse;
-    public string sound;
+    public string sound, Name;
     public string scopeSound = "ButtonHover";
     public string BurstSound = "Map&Buy";
     private Transform firepos;
@@ -98,6 +98,7 @@ public class PlayerTopDownShooting : MonoBehaviour
                 audiomanager = audio;
             }
         }
+
     }
     void Update()
     {
@@ -364,6 +365,11 @@ public class PlayerTopDownShooting : MonoBehaviour
                         objectPooler.Instance.SpawnFromPool("EnemyBlood", fromPlayertoFirePos.point, Quaternion.LookRotation(fromPlayertoFirePos.normal)).GetComponent<ParticleSystem>().Play();
                     }
                 }
+                AIBrain AI = hitInfo.transform.GetComponent<AIBrain>();
+                if (AI != null)
+                {
+                    AI.GotHitBy(sound, damage);
+                }
             }
             if (hitInfo)
             {
@@ -378,6 +384,11 @@ public class PlayerTopDownShooting : MonoBehaviour
                         hitInfo.transform.gameObject.GetComponent<EnemyAttack>().GotKnocked(kBForce, dazeTime);
                         objectPooler.Instance.SpawnFromPool("EnemyBlood", hitInfo.point, Quaternion.LookRotation(hitInfo.normal)).GetComponent<ParticleSystem>().Play();
                     }
+                }
+                AIBrain AI = hitInfo.transform.GetComponent<AIBrain>();
+                if (AI != null)
+                {
+                    AI.GotHitBy(sound + name);
                 }
                 if (lineRenderer.Length > 0) { lineRenderer[i].SetPosition(1, hitInfo.point); }
             }

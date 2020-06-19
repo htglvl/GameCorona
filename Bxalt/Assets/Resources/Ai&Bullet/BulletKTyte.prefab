@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 6868892169527250588}
   - component: {fileID: -4871031279026268821}
   m_Layer: 0
-  m_Name: BulletHKT 1
+  m_Name: BulletKTyte
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,8 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minspeed: 10
+  Name: kt
   maxspeed: 20
-  fromPlayer: 0
+  fromPlayer: 1
   damage: 12
   force: 25
   lifeTime: 3
