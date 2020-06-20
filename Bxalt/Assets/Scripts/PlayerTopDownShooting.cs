@@ -368,7 +368,7 @@ public class PlayerTopDownShooting : MonoBehaviour
                 AIBrain AI = hitInfo.transform.GetComponent<AIBrain>();
                 if (AI != null)
                 {
-                    AI.GotHitBy(sound, damage);
+                    AI.GotHitBy(sound + Name, damage);
                 }
             }
             if (hitInfo)
@@ -388,7 +388,8 @@ public class PlayerTopDownShooting : MonoBehaviour
                 AIBrain AI = hitInfo.transform.GetComponent<AIBrain>();
                 if (AI != null)
                 {
-                    AI.GotHitBy(sound + name);
+                    AI.GotHitBy(sound + Name, damage);
+                    Debug.Log("Trung");
                 }
                 if (lineRenderer.Length > 0) { lineRenderer[i].SetPosition(1, hitInfo.point); }
             }

@@ -49,7 +49,7 @@ public class bullet : MonoBehaviour, IpooledObject
                 }
                 if (AI != null)
                 {
-                    AI.GotHitBy(Name);
+                    AI.GotHitBy(Name, damage);
                 }
                 this.gameObject.SetActive(false);
             }

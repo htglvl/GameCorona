@@ -23,24 +23,24 @@ public class handShow : MonoBehaviour
             disableAll();
             if (currentGun)
             {
-                Debug.Log("havetop");
+                //Debug.Log("havetop");
                 if (gun.transform.GetChild(0).gameObject.name == "Tay Không")
                 {
-                    Debug.Log("tk");
+                    //                    Debug.Log("tk");
                     handLeft.enabled = true;
                     handRight.enabled = true;
                 }
                 else
                 {
-                    Debug.Log("cogun");
+                    //                    Debug.Log("cogun");
                     if (gun.GetComponentInChildren<PlayerTopDownShooting>().holdOneHandTrueTwoHandFalse)
                     {
-                        Debug.Log("oh");
+                        //                        Debug.Log("oh");
                         OneHand.enabled = true;
                     }
                     else
                     {
-                        Debug.Log("full");
+                        //                        Debug.Log("full");
                         twoHandRight.enabled = true;
                         TwoHandLeft.enabled = true;
                     }

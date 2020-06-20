@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minspeed: 40
+  Name: thermo
   maxspeed: 40
   fromPlayer: 1
   damage: 115

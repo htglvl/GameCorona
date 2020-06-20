@@ -123,6 +123,7 @@ MonoBehaviour:
   haveSound: 1
   holdOneHandTrueTwoHandFalse: 1
   sound: thermo
+  Name: 
   scopeSound: ButtonHover
   BurstSound: Map&Buy
   AutoTrueHayOnetapFalse: 1
@@ -132,7 +133,7 @@ MonoBehaviour:
   Burst: 0
   firerate: 9.083333
   reloadTime: 2.77
-  weight: 0.6
+  weight: 0.75
   bulletlifetime: 0
   maxammo: 30
   defaultMagezine: 90

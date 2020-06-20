@@ -88,7 +88,7 @@ MonoBehaviour:
   SpreadVelocityMultiplier: 1
   NotPlayer:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 1079
   isreloadingShotgun: 0
   NormalSpreadIndicator: {r: 1, g: 1, b: 1, a: 1}
   CantShootIndicator: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
