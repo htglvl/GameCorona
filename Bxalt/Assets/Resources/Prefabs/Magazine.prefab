@@ -44,11 +44,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HowMany: 0
+  howLongOnlyNotInstant: 0
   isHealItems: 0
   isReloadItem: 1
   isInCreaseMaxHealth: 0
   Instant: 1
   plusHowManyOrMultipliHowMany: 0
+  isNade: 0
   Index: 1
   PlayerHealth: {fileID: 0}
-  mieuTa: "N\u1EA1p \u0111\u1EA7y b\u0103ng \u0111\u1EA1n \u0111ang d\xF9ng"
+  mieuTa: "N\u1EA1p \u0111\u1EA7y thi\u1EBFt b\u1ECB y t\u1EBF \u0111ang d\xF9ng"
+  nade: {fileID: 0}

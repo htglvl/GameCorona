@@ -6,7 +6,7 @@ public class PlayerTopDownMovement : MonoBehaviour
 {
     public int Index;
     private Rigidbody2D rigid;
-    public float speed = 1, BoostSpeed; // for additional boost like alcoho,...
+    public float speed = 1, BoostSpeed = 1; // for additional boost like alcoho,...
     [HideInInspector]
     public float weight;
     public Vector2 direction;

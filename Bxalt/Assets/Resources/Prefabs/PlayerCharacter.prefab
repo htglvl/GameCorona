@@ -201,8 +201,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Index: 1
-  fDamping: 0.731
   speed: 1
+  BoostSpeed: 0
+  weight: 0
+  direction: {x: 0, y: 0}
 --- !u!114 &1609345506121285240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +247,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  OneRoc2Sui3Bur4Shot: 0
   health: 100
+  CalculateLoot: 0
+  DestroyOnTime: 0
+  IsPlayer: 0
+  DeathTick: 0
+  isBullet: 0
 --- !u!1 &1609345506141951663
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,27 +543,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92973d29e1644444496416f75ebd2337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firepos: {fileID: 1609345507281875051}
+  haveSound: 1
+  holdOneHandTrueTwoHandFalse: 0
+  sound: 
+  Name: 
+  scopeSound: ButtonHover
+  BurstSound: Map&Buy
   AutoTrueHayOnetapFalse: 1
   ChuotPhaiCoTacDung: 0
   chuotphaiChuyenModeTrueHayScopeFalse: 1
-  bulletforce: 0
+  napDanTungVienHayCaBang: 0
+  Burst: 0
   firerate: 30
   reloadTime: 5
+  weight: 0
   bulletlifetime: 0
   maxammo: 6
-  BulletBurstFireRate: 0.1
-  FireRateBetweenBurst: 0.3
+  defaultMagezine: 0
+  currentammo: 0
+  currentBulletInMagazine: 0
+  rateofFireBetweenBurstbullets: 0.1
+  burstFireRate: 0
   ProjectilePrefab: {fileID: 0}
   NumberOfBulletsBurst: 3
+  isreloading: 0
   index: 1
   RayCastTrueHayPrefabFalse: 1
-  lineRenderer: {fileID: 1609345505902280743}
-  length: 10
+  lengthRayCast: 0
   impacteffect: {fileID: 5200745014960430895, guid: a22f30c16360d5741ac86be0e3890fd9,
     type: 3}
+  EnemyBlood: {fileID: 0}
   damage: 30
-  MuzzleFlash: {fileID: 1609345507285738068}
+  maxBulletSpreadAngle: 0
+  timeTillMaxSpreadAngle: 0
+  coolDownMultiplier: 0
+  soVienBanRa1Luc: 0
+  dazeTime: 0
+  kBForce: 0
+  SpreadVelocityMultiplier: 1
+  NotPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isreloadingShotgun: 0
+  NormalSpreadIndicator: {r: 0, g: 0, b: 0, a: 0}
+  CantShootIndicator: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1609345507281875050
 GameObject:
   m_ObjectHideFlags: 0

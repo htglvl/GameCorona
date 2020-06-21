@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class items : MonoBehaviour
 {
-    public float HowMany, howLongOnlyNotInstant;
-    public bool isHealItems, isReloadItem, isInCreaseMaxHealth, Instant, plusHowManyOrMultipliHowMany, isNade;
+    public float HowMany;
+    public bool isHealItems, isReloadItem, isInCreaseMaxHealth, Instant, plusHowManyOrMultipliHowMany, isNade, isIncreaseSpeedItem;
     public int Index;
     public Enemy PlayerHealth;
     public string mieuTa;
@@ -62,6 +62,13 @@ public class items : MonoBehaviour
                     }
                 }
             }
+            if (isIncreaseSpeedItem)
+            {
+                if (Input.GetButtonDown("Use" + Index.ToString()))
+                {
+                    StartCoroutine(IncreaseSpeed(5f));
+                }
+            }
         }
         if (PlayerHealth.health > PlayerHealth.maxHealth)
         {
@@ -95,5 +102,13 @@ public class items : MonoBehaviour
     public void InstanceReload()
     {
         GameObject.FindObjectOfType<PlayerTopDownShooting>().currentammo = GameObject.FindObjectOfType<PlayerTopDownShooting>().maxammo;
+    }
+    IEnumerator IncreaseSpeed(float LastHowLong)
+    {
+        GameObject.FindObjectOfType<PlayerTopDownMovement>().BoostSpeed = 3;
+        GameObject.FindObjectOfType<itemsUI>().DeleteImage();
+        yield return new WaitForSeconds(LastHowLong);
+        GameObject.FindObjectOfType<PlayerTopDownMovement>().BoostSpeed = 1;
+        Destroy(this.gameObject);
     }
 }

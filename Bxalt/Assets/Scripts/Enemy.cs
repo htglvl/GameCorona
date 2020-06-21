@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour
         if (IsPlayer)
         {
             FindObjectOfType<GameManager>().EndGame();
+            GetComponent<PlayerTopDownMovement>().enabled = false;
         }
         if (DeathTick)
         {

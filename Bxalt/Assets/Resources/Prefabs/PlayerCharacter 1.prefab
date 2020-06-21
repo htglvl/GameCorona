@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565605ee87a55ff40bef5ed622e7f8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallet: 999
+  wallet: 50
   TotalEnemyDieRocket: 0
   TotalEnemyDieSuicide: 0
   TotalEnemyDieBurst: 0

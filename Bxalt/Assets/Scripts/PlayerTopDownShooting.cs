@@ -389,7 +389,6 @@ public class PlayerTopDownShooting : MonoBehaviour
                 if (AI != null)
                 {
                     AI.GotHitBy(sound + Name, damage);
-                    Debug.Log("Trung");
                 }
                 if (lineRenderer.Length > 0) { lineRenderer[i].SetPosition(1, hitInfo.point); }
             }

@@ -56,8 +56,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 10
-  far clip plane: 100
+  near clip plane: 27.23
+  far clip plane: 52.21
   field of view: 60
   orthographic: 1
   orthographic size: 8.08
@@ -99,7 +99,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0

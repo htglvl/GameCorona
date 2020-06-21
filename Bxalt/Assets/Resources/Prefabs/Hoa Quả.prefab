@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8098634512060499004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8098634512060499002}
+  - component: {fileID: 8098634512060499005}
+  m_Layer: 0
+  m_Name: "Hoa Qu\u1EA3"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8098634512060499002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098634512060499004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.772995, y: 2.0993557, z: -13.019144}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8098634512060499005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098634512060499004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78937acd051ac474d943e45a58e7669b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HowMany: 1
+  isHealItems: 0
+  isReloadItem: 0
+  isInCreaseMaxHealth: 0
+  Instant: 0
+  plusHowManyOrMultipliHowMany: 0
+  isNade: 0
+  isIncreaseSpeedItem: 1
+  Index: 1
+  PlayerHealth: {fileID: 0}
+  mieuTa: "Gi\xFAp ch\u1EA1y nhanh h\u01A1n trong 5 gi\xE2y"
+  nade: {fileID: 0}

@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minspeed: 30
+  Name: sani
   maxspeed: 30
   fromPlayer: 1
   damage: 63

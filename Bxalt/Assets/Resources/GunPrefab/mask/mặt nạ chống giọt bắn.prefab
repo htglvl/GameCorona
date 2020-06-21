@@ -50,10 +50,11 @@ MonoBehaviour:
   haveSound: 1
   holdOneHandTrueTwoHandFalse: 0
   sound: mask
+  Name: 
   scopeSound: ButtonHover
   BurstSound: Map&Buy
   AutoTrueHayOnetapFalse: 0
-  ChuotPhaiCoTacDung: 0
+  ChuotPhaiCoTacDung: 1
   chuotphaiChuyenModeTrueHayScopeFalse: 0
   napDanTungVienHayCaBang: 0
   Burst: 0

@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
             gameHasEnded = true;
             Debug.Log("Game Over");
             DeadMenuUI.SetActive(true);
-            DeadMenuUI.GetComponent<DeathScreen>().GetDeathStats();
+            //DeadMenuUI.GetComponent<DeathScreen>().GetDeathStats();
             gameObject.GetComponent<BuyMenuAndHotkey>().enabled = false;
             gameObject.GetComponent<BuyMenuAndHotkey>().BuyMenu.SetActive(false);
         }

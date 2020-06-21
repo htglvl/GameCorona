@@ -532,10 +532,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: cff185764ecb77c44ad8b6957cec6b4c, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -678,10 +678,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: cff185764ecb77c44ad8b6957cec6b4c, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1105,6 +1105,74 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2944069361906642394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8036470779414712294}
+  - component: {fileID: 3819378829465252616}
+  - component: {fileID: 7890948705899628387}
+  m_Layer: 0
+  m_Name: Forcefield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8036470779414712294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2944069361906642394}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3542256760845176042}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!250 &3819378829465252616
+PointEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2944069361906642394}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceMagnitude: 200
+  m_ForceVariation: 5
+  m_DistanceScale: 1.43
+  m_ForceSource: 1
+  m_ForceTarget: 1
+  m_ForceMode: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+--- !u!58 &7890948705899628387
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2944069361906642394}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.29
 --- !u!1 &3300848521617361459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,6 +1355,7 @@ Transform:
   - {fileID: 3542256762480950409}
   - {fileID: 3542256760980794254}
   - {fileID: 8435124626396458808}
+  - {fileID: 8036470779414712294}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1353,7 +1422,7 @@ MonoBehaviour:
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 1
-  constrainInsideGraph: 0
+  constrainInsideGraph: 1
 --- !u!114 &3542256760845176043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1412,22 +1481,26 @@ MonoBehaviour:
   Shield: {fileID: 1906102506756557340}
   MedicHat: {fileID: 974645287}
   Canvas: {fileID: 1026131311168889823}
+  panel: {fileID: 640888156224226294}
   shieldCircle: {fileID: 436635127}
   vacxinCircle: {fileID: 1911974847}
   virusCircle: {fileID: 1694835277}
+  forceField: {fileID: 2944069361906642394}
   BiBenh: 0
   VirusRuaBangSoapTrueSaniFalse: 0
   NeedTiemPhong: 0
   daxetnghiem: 0
+  haveJustDamaged: 0
   BenhTiemPhong: 0
-  phantramnguoiBiBenh: 0.7
+  phantramnguoiBiBenh: 0.6
   phanTramNguoiCoMask: 0.3
   phanTramNguoiCoShield: 0.2
-  phanTramNguoiCoMedicHat: 0.1
-  phantramnguoicanTiemPhong: 1
+  phanTramNguoiCoMedicHat: 0.5
+  phantramnguoicanTiemPhong: 0.5
   PercentSickCleanBySoapOtherUseSani: 0.5
-  TiemBaoNhieu: 1
-  DoTayRua: 1
+  TiemBaoNhieu: 100
+  DoTayRua: 100
+  detectRadius: 1
   TenBenhTiemPhong:
   - Rubella
   - "Quai B\u1ECB"
