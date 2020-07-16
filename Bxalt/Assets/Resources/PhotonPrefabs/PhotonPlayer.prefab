@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4167721700739742251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4167721700739742228}
+  - component: {fileID: 6821686657277486599}
+  - component: {fileID: -6030826649012772779}
+  - component: {fileID: 4305072168996607516}
+  - component: {fileID: 4850351964048190438}
+  - component: {fileID: 6050342928851864841}
+  m_Layer: 0
+  m_Name: PhotonPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4167721700739742228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4167721700739742251}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.703127, y: 7.091253, z: -72.9818}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6821686657277486599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4167721700739742251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &-6030826649012772779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4167721700739742251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+--- !u!114 &4305072168996607516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4167721700739742251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155c75bacc6ef494ba9faa5f95ad521a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Index: 0
+  speed: 1
+  BoostSpeed: 1
+  weight: 0
+  direction: {x: 0, y: 0}
+--- !u!114 &4850351964048190438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4167721700739742251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff2f2f97c1dc3149a58e42c8dd6627d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetRotation: -90
+--- !u!114 &6050342928851864841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4167721700739742251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92973d29e1644444496416f75ebd2337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  haveSound: 1
+  holdOneHandTrueTwoHandFalse: 0
+  sound: 
+  Name: 
+  scopeSound: ButtonHover
+  BurstSound: Map&Buy
+  AutoTrueHayOnetapFalse: 0
+  ChuotPhaiCoTacDung: 0
+  chuotphaiChuyenModeTrueHayScopeFalse: 0
+  napDanTungVienHayCaBang: 0
+  Burst: 0
+  firerate: 0
+  reloadTime: 0
+  weight: 0
+  bulletlifetime: 0
+  maxammo: 0
+  defaultMagezine: 0
+  currentammo: 0
+  currentBulletInMagazine: 0
+  rateofFireBetweenBurstbullets: 0.1
+  burstFireRate: 0
+  ProjectilePrefab: {fileID: 0}
+  NumberOfBulletsBurst: 3
+  isreloading: 0
+  index: 0
+  RayCastTrueHayPrefabFalse: 0
+  lengthRayCast: 0
+  impacteffect: {fileID: 0}
+  EnemyBlood: {fileID: 0}
+  damage: 0
+  maxBulletSpreadAngle: 0
+  timeTillMaxSpreadAngle: 0
+  coolDownMultiplier: 0
+  soVienBanRa1Luc: 0
+  dazeTime: 0
+  kBForce: 0
+  SpreadVelocityMultiplier: 1
+  NotPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isreloadingShotgun: 0
+  NormalSpreadIndicator: {r: 0, g: 0, b: 0, a: 0}
+  CantShootIndicator: {r: 0, g: 0, b: 0, a: 0}

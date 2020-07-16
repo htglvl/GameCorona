@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public GameObject DeadMenuUI;
     public bool gameIsPause = false;
     public GameObject PauseMenuUI;
+    public TrackAIStats trackAIStats;
+
     public void EndGame()
     {
         if (!gameHasEnded)
@@ -35,6 +37,10 @@ public class GameManager : MonoBehaviour
             {
                 Pause();
             }
+        }
+        if (trackAIStats.SoAI == trackAIStats.SonguoiDcBaoVe && trackAIStats.SonguoiCanTiemPhong == 0 && trackAIStats.SoNguoiBiBenh == 0 && trackAIStats.SoAI != 0)
+        {
+            EndGame();
         }
     }
     public void Pause()

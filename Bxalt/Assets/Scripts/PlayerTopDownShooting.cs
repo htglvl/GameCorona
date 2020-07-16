@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using Photon.Pun;
 public class PlayerTopDownShooting : MonoBehaviour
 {
     #region Variable 
@@ -66,161 +67,181 @@ public class PlayerTopDownShooting : MonoBehaviour
         float Angle = Mathf.Deg2Rad * (firepos.eulerAngles.z + SpreadShotGunOrNormal(Left) + 90f);
         return new Vector2(Distance * Mathf.Cos(Angle) + firepos.position.x, Distance * Mathf.Sin(Angle) + firepos.position.y);
     }
+    public bool CanControl = false;
+    private PhotonView PV = null;
     #endregion
     private void OnEnable()
     {
+        PV = transform.parent.parent.GetComponent<PhotonView>();
+        if (PV == null)
+        {
+            CanControl = true;
+        }
+        else
+        {
+            if (PV.IsMine)
+            {
+                CanControl = true;
+            }
+        }
         isreloading = false;
         ShotgunCanReloading = false;
         transform.parent.parent.GetComponent<PlayerTopDownMovement>().weight = weight;
     }
     void Start()
     {
-        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        currentBulletInMagazine = defaultMagezine;
-        foreach (Transform child in transform)
+        if (CanControl)
         {
-            if (child.tag == "firePos") { firepos = child; }
-            if (child.tag == "MuzzleFlash") { MuzzleFlash = child.gameObject; }
-
-        }
-        lineRenderer = GetComponentsInChildren<LineRenderer>();
-        currentammo = maxammo;
-        CrossHair = GameObject.FindGameObjectWithTag("CrossHair");
-        LeftSpreadIndicator = GameObject.FindGameObjectWithTag("LeftCrossHair");
-        RightSpreadIndicator = GameObject.FindGameObjectWithTag("RightCrossHair");
-        LeftIndicatorSprite = LeftSpreadIndicator.GetComponentInChildren<SpriteRenderer>();
-        RightIndicatorSprite = RightSpreadIndicator.GetComponentInChildren<SpriteRenderer>();
-        audiomanager[] audiomanagers = FindObjectsOfType<audiomanager>();
-        foreach (var audio in audiomanagers)
-        {
-            if (audio.OnlyOneCanBe == false)
+            cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+            currentBulletInMagazine = defaultMagezine;
+            foreach (Transform child in transform)
             {
-                audiomanager = audio;
-            }
-        }
+                if (child.tag == "firePos") { firepos = child; }
+                if (child.tag == "MuzzleFlash") { MuzzleFlash = child.gameObject; }
 
+            }
+            lineRenderer = GetComponentsInChildren<LineRenderer>();
+            currentammo = maxammo;
+            CrossHair = GameObject.FindGameObjectWithTag("CrossHair");
+            LeftSpreadIndicator = GameObject.FindGameObjectWithTag("LeftCrossHair");
+            RightSpreadIndicator = GameObject.FindGameObjectWithTag("RightCrossHair");
+            LeftIndicatorSprite = LeftSpreadIndicator.GetComponentInChildren<SpriteRenderer>();
+            RightIndicatorSprite = RightSpreadIndicator.GetComponentInChildren<SpriteRenderer>();
+            audiomanager[] audiomanagers = FindObjectsOfType<audiomanager>();
+            foreach (var audio in audiomanagers)
+            {
+                if (audio.OnlyOneCanBe == false)
+                {
+                    audiomanager = audio;
+                }
+            }
+
+        }
     }
     void Update()
     {
-        if (Time.timeScale > 0)
+        if (CanControl)
         {
-            SpreadIndicator();
-            if (ShotgunCanReloading && currentammo < maxammo && currentBulletInMagazine > 0 && haveJustShot == false && napDanTungVienHayCaBang)
+            if (Time.timeScale > 0)
             {
-                ShotgunCanReloading = false;
-                StartCoroutine(ReloadTungVien1());
-                return;
-            }
-            if (isreloading == true && currentammo == maxammo)
-            {
-                isreloading = false;
-                StopCoroutine(Reload());
-            }
-            if (isreloading == true)
-            {
-                return;
-            }
-            if (fireTime < 0)
-            {
-                fireTime = 0;
-            }
-            if (fireTime > timeTillMaxSpreadAngle)
-            {
-                fireTime = timeTillMaxSpreadAngle;
-            }
-            transform.position = transform.parent.parent.Find("Guns").position;
-            transform.rotation = transform.parent.parent.Find("Guns").rotation;
-            if (Input.GetButtonDown("Fire2" + index.ToString()) && ChuotPhaiCoTacDung)
-            {
-                if (chuotphaiChuyenModeTrueHayScopeFalse)
+                SpreadIndicator();
+                if (ShotgunCanReloading && currentammo < maxammo && currentBulletInMagazine > 0 && haveJustShot == false && napDanTungVienHayCaBang)
                 {
-                    Burst = !Burst;
-                    audiomanager.Play(BurstSound);
+                    ShotgunCanReloading = false;
+                    StartCoroutine(ReloadTungVien1());
+                    return;
                 }
-                else
+                if (isreloading == true && currentammo == maxammo)
                 {
-                    cam.GetComponent<CameraController>().scope = !cam.GetComponent<CameraController>().scope;
-                    audiomanager.Play(scopeSound);
+                    isreloading = false;
+                    StopCoroutine(Reload());
                 }
-            }
-            if ((currentammo <= 0 && Input.GetButton("Fire1" + index.ToString())) || (Input.GetKeyDown(KeyCode.R) && currentammo < maxammo) && currentBulletInMagazine > 0)
-            {
-                if (!isreloadingShotgun)
+                if (isreloading == true)
                 {
-                    haveJustShot = false;
-                    ShotgunCanReloading = true;
+                    return;
                 }
-                StartCoroutine(Reload());
-                return;
-            }
-            if (AutoTrueHayOnetapFalse)
-            {
-                if (Burst)
+                if (fireTime < 0)
                 {
-                    if (Input.GetButton("Fire1" + index.ToString()))
+                    fireTime = 0;
+                }
+                if (fireTime > timeTillMaxSpreadAngle)
+                {
+                    fireTime = timeTillMaxSpreadAngle;
+                }
+                transform.position = transform.parent.parent.Find("Guns").position;
+                transform.rotation = transform.parent.parent.Find("Guns").rotation;
+                if (Input.GetButtonDown("Fire2" + index.ToString()) && ChuotPhaiCoTacDung)
+                {
+                    if (chuotphaiChuyenModeTrueHayScopeFalse)
                     {
-                        fireTime += Time.deltaTime;
-                        if (Time.time >= nexttimetofire)
+                        Burst = !Burst;
+                        audiomanager.Play(BurstSound);
+                    }
+                    else
+                    {
+                        cam.GetComponent<CameraController>().scope = !cam.GetComponent<CameraController>().scope;
+                        audiomanager.Play(scopeSound);
+                    }
+                }
+                if ((currentammo <= 0 && Input.GetButton("Fire1" + index.ToString())) || (Input.GetKeyDown(KeyCode.R) && currentammo < maxammo) && currentBulletInMagazine > 0)
+                {
+                    if (!isreloadingShotgun)
+                    {
+                        haveJustShot = false;
+                        ShotgunCanReloading = true;
+                    }
+                    StartCoroutine(Reload());
+                    return;
+                }
+                if (AutoTrueHayOnetapFalse)
+                {
+                    if (Burst)
+                    {
+                        if (Input.GetButton("Fire1" + index.ToString()))
                         {
-                            nexttimetofire = Time.time + 1 / burstFireRate;
-                            StartCoroutine(BurstShoot());
+                            fireTime += Time.deltaTime;
+                            if (Time.time >= nexttimetofire)
+                            {
+                                nexttimetofire = Time.time + 1 / burstFireRate;
+                                StartCoroutine(BurstShoot());
+                            }
+                        }
+                        else
+                        {
+                            fireTime -= Time.deltaTime * coolDownMultiplier;
                         }
                     }
                     else
                     {
-                        fireTime -= Time.deltaTime * coolDownMultiplier;
-                    }
-                }
-                else
-                {
-                    if (Input.GetButton("Fire1" + index.ToString()))
-                    {
-                        fireTime += Time.deltaTime;
-                        if (Time.time >= nexttimetofire)
+                        if (Input.GetButton("Fire1" + index.ToString()))
                         {
-                            nexttimetofire = Time.time + 1 / firerate;
-                            Shoot();
+                            fireTime += Time.deltaTime;
+                            if (Time.time >= nexttimetofire)
+                            {
+                                nexttimetofire = Time.time + 1 / firerate;
+                                Shoot();
+                            }
+                        }
+                        else
+                        {
+                            fireTime -= Time.deltaTime * coolDownMultiplier;
                         }
                     }
-                    else
-                    {
-                        fireTime -= Time.deltaTime * coolDownMultiplier;
-                    }
-                }
 
-            }
-            else
-            {
-                if (Burst)
-                {
-                    if (Input.GetButtonDown("Fire1" + index.ToString()))
-                    {
-                        fireTime += Time.deltaTime;
-                        if (Time.time >= nexttimetofire)
-                        {
-                            nexttimetofire = Time.time + 1 / burstFireRate;
-                            StartCoroutine(BurstShoot());
-                        }
-                    }
-                    else
-                    {
-                        fireTime -= Time.deltaTime * coolDownMultiplier;
-                    }
                 }
                 else
                 {
-                    if (Input.GetButtonDown("Fire1" + index.ToString()))
+                    if (Burst)
                     {
-                        fireTime += Time.deltaTime;
-                        if (Time.time >= nexttimetofire)
+                        if (Input.GetButtonDown("Fire1" + index.ToString()))
                         {
-                            nexttimetofire = Time.time + 1 / firerate;
-                            Shoot();
+                            fireTime += Time.deltaTime;
+                            if (Time.time >= nexttimetofire)
+                            {
+                                nexttimetofire = Time.time + 1 / burstFireRate;
+                                StartCoroutine(BurstShoot());
+                            }
+                        }
+                        else
+                        {
+                            fireTime -= Time.deltaTime * coolDownMultiplier;
                         }
                     }
                     else
                     {
-                        fireTime -= Time.deltaTime * coolDownMultiplier;
+                        if (Input.GetButtonDown("Fire1" + index.ToString()))
+                        {
+                            fireTime += Time.deltaTime;
+                            if (Time.time >= nexttimetofire)
+                            {
+                                nexttimetofire = Time.time + 1 / firerate;
+                                Shoot();
+                            }
+                        }
+                        else
+                        {
+                            fireTime -= Time.deltaTime * coolDownMultiplier;
+                        }
                     }
                 }
             }

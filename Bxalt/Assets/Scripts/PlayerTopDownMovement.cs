@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerTopDownMovement : MonoBehaviour
 {
@@ -10,27 +11,50 @@ public class PlayerTopDownMovement : MonoBehaviour
     [HideInInspector]
     public float weight;
     public Vector2 direction;
+    private PhotonView PV = null;
+    public bool CanControl = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        rigid = gameObject.GetComponent<Rigidbody2D>();
+        PV = gameObject.GetComponent<PhotonView>();
+        if (PV == null)
+        {
+            CanControl = true;
+        }
+        else
+        {
+            if (PV.IsMine)
+            {
+                CanControl = true;
+            }
+        }
+        if (CanControl)
+        {
+            rigid = gameObject.GetComponent<Rigidbody2D>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        direction = new Vector2(Input.GetAxisRaw("Horizontal" + Index.ToString()), Input.GetAxisRaw("Vertical" + Index.ToString())).normalized;
-        if (weight == 0)
+        if (CanControl)
         {
-            Debug.Log("with that much weight he can never walk");
-            weight = 1;
+            direction = new Vector2(Input.GetAxisRaw("Horizontal" + Index.ToString()), Input.GetAxisRaw("Vertical" + Index.ToString())).normalized;
+            if (weight == 0)
+            {
+                Debug.Log("with that much weight he can never walk");
+                weight = 1;
+            }
         }
     }
     private void FixedUpdate()
     {
-        rigid.AddForce(direction * speed * weight * BoostSpeed * Time.fixedDeltaTime);
-        //Debug.Log(rigid.velocity.magnitude);
-        //rigid.MovePosition(rigid.position + direction * speed * BoostSpeed * Time.fixedDeltaTime);
+        if (CanControl)
+        {
+            rigid.AddForce(direction * speed * weight * BoostSpeed * Time.fixedDeltaTime);
+            //Debug.Log(rigid.velocity.magnitude);
+            //rigid.MovePosition(rigid.position + direction * speed * BoostSpeed * Time.fixedDeltaTime);
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class playerTopDownRotation : MonoBehaviour
 {
@@ -9,17 +10,38 @@ public class playerTopDownRotation : MonoBehaviour
     float angle;
     Quaternion rotation;
     public float offsetRotation = -90;
+    private PhotonView PV;
+    public bool CanControl = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        PV = gameObject.GetComponent<PhotonView>();
+        if (PV == null)
+        {
+            CanControl = true;
+        }
+        else
+        {
+            if (PV.IsMine)
+            {
+                CanControl = true;
+            }
+        }
+        if (CanControl)
+        {
+            cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Rotation();
+        if (CanControl)
+        {
+            Rotation();
+        }
     }
     void Rotation()
     {

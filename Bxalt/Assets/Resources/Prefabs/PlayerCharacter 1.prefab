@@ -547,6 +547,7 @@ MonoBehaviour:
   BoostSpeed: 1
   weight: 0
   direction: {x: 0, y: 0}
+  test: 0
 --- !u!114 &3455560776245264754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,6 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offsetRotation: -90
+  test: 0
 --- !u!58 &3455560776245264764
 CircleCollider2D:
   m_ObjectHideFlags: 0
