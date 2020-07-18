@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class GameManager : MonoBehaviour
 {
@@ -65,12 +66,14 @@ public class GameManager : MonoBehaviour
     }
     public void Quit()
     {
+        PhotonNetwork.LeaveRoom();
         Application.Quit();
     }
     public void Menu()
     {
+        PhotonNetwork.LeaveRoom();
         Time.timeScale = 1f;
         gameIsPause = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(0);
     }
 }

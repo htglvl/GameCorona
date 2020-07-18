@@ -10,18 +10,12 @@ public class NetworkController : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     // if unity editor is connect to a difference region of a standalone build then 
     //set the fixed region in PhotonServerSetting during development process
-    void Start()
+    void Awake()
     {
         PhotonNetwork.ConnectUsingSettings();
     }
     public override void OnConnectedToMaster()
     {
         Debug.Log("We are now connected to the " + PhotonNetwork.CloudRegion + " server");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

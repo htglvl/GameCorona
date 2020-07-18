@@ -15,7 +15,6 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     private GameObject MainPanel;
     [SerializeField]
     private TMP_InputField PlayerNameInput;
-
     private string RoomName;
     private int RoomSize;
     private List<RoomInfo> RoomListing;
