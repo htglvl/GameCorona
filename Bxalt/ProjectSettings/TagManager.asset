@@ -17,6 +17,11 @@ TagManager:
   - RightCrossHair
   - itemHolder
   - AudioManager
+  - ShieldForPlayer
+  - MaskForPlayer
+  - QuarantineSpotForPlayer
+  - DoorQuarantineForPlayer
+  - shieldIconForPlayer
   layers:
   - Default
   - TransparentFX
@@ -29,7 +34,7 @@ TagManager:
   - Character
   - MiniMapOnly
   - GroundAndObstacle
-  - 
+  - DoorForPlayerOnly
   - 
   - 
   - 

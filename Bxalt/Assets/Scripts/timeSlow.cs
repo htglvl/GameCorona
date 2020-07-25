@@ -11,5 +11,10 @@ public class timeSlow : MonoBehaviour
         {
             Time.timeScale *= 0.1f;
         }
+        if (Input.GetKey(KeyCode.Period))
+        {
+            Time.timeScale = 15;
+        }
+
     }
 }

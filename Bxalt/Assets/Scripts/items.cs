@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class items : MonoBehaviour
 {
     public float HowMany;
-    public bool isHealItems, isReloadItem, isInCreaseMaxHealth, Instant, plusHowManyOrMultipliHowMany, isNade, isIncreaseSpeedItem;
+    public bool isHealItems, isReloadItem, isInCreaseMaxHealth, Instant, plusHowManyOrMultipliHowMany, isNade, isIncreaseSpeedItem, isKhauTrang = false, isShield = false;
     public int Index;
     public Enemy PlayerHealth;
     public string mieuTa;
@@ -39,6 +40,10 @@ public class items : MonoBehaviour
                 if (isReloadItem)
                 {
                     InstanceReload();
+                }
+                if (isShield)
+                {
+                    shield();
                 }
                 GameObject.FindObjectOfType<itemsUI>().DeleteImage();
                 Destroy(this.gameObject);
@@ -80,7 +85,10 @@ public class items : MonoBehaviour
     {
         if (plusHowManyOrMultipliHowMany)
         {
-
+            if (isKhauTrang)
+            {
+                GameObject.FindGameObjectWithTag("MaskForPlayer").GetComponent<SpriteRenderer>().enabled = true;
+            }
             PlayerHealth.health += baonhieu;
         }
         else
@@ -110,5 +118,16 @@ public class items : MonoBehaviour
         yield return new WaitForSeconds(LastHowLong);
         GameObject.FindObjectOfType<PlayerTopDownMovement>().BoostSpeed = 1;
         Destroy(this.gameObject);
+    }
+    void shield()
+    {
+        if (GameObject.FindGameObjectWithTag("ShieldForPlayer").GetComponent<SpriteRenderer>() != null)
+        {
+            GameObject.FindGameObjectWithTag("ShieldForPlayer").GetComponent<SpriteRenderer>().enabled = true;
+        }
+        if (GameObject.FindGameObjectWithTag("shieldIconForPlayer").GetComponent<Image>() != null)
+        {
+            GameObject.FindGameObjectWithTag("shieldIconForPlayer").GetComponent<Image>().enabled = true;
+        }
     }
 }

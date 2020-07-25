@@ -32,10 +32,10 @@ RectTransform:
   m_Father: {fileID: 8180777812830621749}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -30.165, y: 0}
-  m_SizeDelta: {x: 60.34, y: 30}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 101.25, y: -30}
+  m_SizeDelta: {x: 202.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &687455680702540181
 CanvasRenderer:
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.9069824, y: 0, z: 0, w: 0}
+  m_margin: {x: 144.5405, y: 0, z: 0, w: 29.600105}
   m_textInfo:
     textComponent: {fileID: 3014576604751254932}
     characterCount: 0
@@ -168,7 +168,6 @@ GameObject:
   - component: {fileID: 8438523602590250287}
   - component: {fileID: 6667212060570163581}
   - component: {fileID: 6380448740696011552}
-  - component: {fileID: -6911568885128239965}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -301,31 +300,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 167427113056788602}
   SizeText: {fileID: 3014576604751254932}
---- !u!114 &-6911568885128239965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7356864364892136527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 1
-  m_Spacing: 5
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
 --- !u!1 &8194806233142559842
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,10 +332,10 @@ RectTransform:
   m_Father: {fileID: 8180777812830621749}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -30.17, y: 0}
-  m_SizeDelta: {x: -60.33, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 101.25, y: -15}
+  m_SizeDelta: {x: 202.5, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8126344836760380540
 CanvasRenderer:
@@ -455,7 +429,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 1.1904907, w: 0}
+  m_margin: {x: 0, y: 0, z: 57.446873, w: 0}
   m_textInfo:
     textComponent: {fileID: 167427113056788602}
     characterCount: 6

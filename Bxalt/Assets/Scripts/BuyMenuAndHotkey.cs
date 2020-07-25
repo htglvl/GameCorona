@@ -28,7 +28,7 @@ public class BuyMenuAndHotkey : MonoBehaviour
         }
         else
         {
-            if (GetComponent<GameManager>().gameIsPause == false && !Input.GetKey(KeyCode.Space)/*dung cho slowTime*/)
+            if (GetComponent<GameManager>().gameIsPause == false && !Input.GetKey(KeyCode.Space)/*dung cho slowTime*/ && !Input.GetKey(KeyCode.Period)/*dung cho fashTime*/)
             {
                 Time.timeScale = 1;
             }

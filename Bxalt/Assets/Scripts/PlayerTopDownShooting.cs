@@ -6,7 +6,7 @@ using Photon.Pun;
 public class PlayerTopDownShooting : MonoBehaviour
 {
     #region Variable 
-    public bool haveSound = true, holdOneHandTrueTwoHandFalse;
+    public bool haveSound = true, holdOneHandTrueTwoHandFalse, IsG = false, IsC = false;
     public string sound, Name;
     public string scopeSound = "ButtonHover";
     public string BurstSound = "Map&Buy";
@@ -394,6 +394,7 @@ public class PlayerTopDownShooting : MonoBehaviour
             }
             if (hitInfo)
             {
+
                 Enemy enemy = hitInfo.transform.GetComponent<Enemy>();
                 if (enemy != null)
                 {
@@ -405,13 +406,32 @@ public class PlayerTopDownShooting : MonoBehaviour
                         hitInfo.transform.gameObject.GetComponent<EnemyAttack>().GotKnocked(kBForce, dazeTime);
                         objectPooler.Instance.SpawnFromPool("EnemyBlood", hitInfo.point, Quaternion.LookRotation(hitInfo.normal)).GetComponent<ParticleSystem>().Play();
                     }
+
                 }
                 AIBrain AI = hitInfo.transform.GetComponent<AIBrain>();
                 if (AI != null)
                 {
                     AI.GotHitBy(sound + Name, damage);
+                    if (IsC)
+                    {
+                        randomDestinationAI RDAI = hitInfo.transform.GetComponent<randomDestinationAI>();
+                        if (RDAI != null)
+                        {
+                            RDAI.stop = true;
+                        }
+                    }
+                    if (IsG)
+                    {
+                        randomDestinationAI RDAI = hitInfo.transform.GetComponent<randomDestinationAI>();
+                        if (RDAI != null)
+                        {
+                            RDAI.quarantine = true;
+                        }
+                    }
                 }
                 if (lineRenderer.Length > 0) { lineRenderer[i].SetPosition(1, hitInfo.point); }
+
+
             }
             else
             {

@@ -8,23 +8,36 @@ public class AIBrain : MonoBehaviour
 {
     public GameObject Mask, Shield, MedicHat, Canvas, panel, shieldCircle, vacxinCircle, virusCircle, forceField;
     money playerWallet;
-    public bool BiBenh, VirusRuaBangSoapTrueSaniFalse, NeedTiemPhong, daxetnghiem, haveJustDamaged = false;
+    public bool BiBenh, VirusRuaBangSoapTrueSaniFalse, NeedTiemPhong, daxetnghiem, haveJustDamaged = false, BiSot;
     public int BenhTiemPhong;
-    public float phantramnguoiBiBenh = 0.5f, phanTramNguoiCoMask = 0.5f, phanTramNguoiCoShield = 0.5f, phanTramNguoiCoMedicHat = 0.5f, phantramnguoicanTiemPhong = 0.5f, PercentSickCleanBySoapOtherUseSani = 0.5f, TiemBaoNhieu = 100f, DoTayRua = 100f, detectRadius;
+    public float phantramnguoiBiBenh = 0.5f, phanTramNguoiBiSot = 0.3f, phanTramNguoiCoMask = 0.5f, phanTramNguoiCoShield = 0.5f, phanTramNguoiCoMedicHat = 0.5f, phantramnguoicanTiemPhong = 0.5f, PercentSickCleanBySoapOtherUseSani = 0.5f, TiemBaoNhieu = 100f, DoTayRua = 100f, detectRadius, TimeMacBenh = 60.0f;
     public string[] TenBenhTiemPhong;
-    public TextMeshProUGUI TextTiemPhong, CoBiVirusKo, DTR, TBN;
+    public TextMeshProUGUI TextTiemPhong, CoBiVirusKo, CoBiSotKhong, DTR, TBN;
 
     public bool paidForVacxinOnce = true;
     public bool paidForVirusOnce = true;
+    private float Pri_TimeMacBenh = 0.0f;
+    public bool DenkhuCachLy;
 
     // Start is called before the first frame update
     void Start()
     {
+        Pri_TimeMacBenh = 0;
         playerWallet = Transform.FindObjectOfType<money>();
         forceField.SetActive(false);
         Mask.SetActive(Random.value < phanTramNguoiCoMask ? true : false);
         MedicHat.SetActive(Random.value < phanTramNguoiCoMedicHat ? true : false);
         Shield.SetActive(Random.value < phanTramNguoiCoShield ? true : false);
+        if (Random.value < phanTramNguoiBiSot)
+        {
+            CoBiSotKhong.text = "Bị sốt, cần đưa đi cách ly";
+            BiSot = true;
+        }
+        else
+        {
+            CoBiSotKhong.text = "Không sốt";
+            BiSot = false;
+        }
         if (Random.value < phantramnguoiBiBenh)
         {
             //Debug.Log("bibenh");
@@ -101,14 +114,15 @@ public class AIBrain : MonoBehaviour
                 }
                 if (otherCivillan[i].gameObject.tag == "Player" && BiBenh)
                 {
-                    Debug.Log("dam");
-                    if (!haveJustDamaged)
+                    if (GameObject.FindGameObjectWithTag("ShieldForPlayer").GetComponent<SpriteRenderer>().enabled == false)
                     {
-                        haveJustDamaged = true;
-                        otherCivillan[i].GetComponent<Enemy>().TakeDamage(20);
+                        if (!haveJustDamaged)
+                        {
+                            haveJustDamaged = true;
+                            otherCivillan[i].GetComponent<Enemy>().TakeDamage(20);
+                        }
+                        StartCoroutine(Forcefield(.3f));
                     }
-                    StartCoroutine(Forcefield(.3f));
-
                 }
             }
         }
@@ -167,9 +181,11 @@ public class AIBrain : MonoBehaviour
             {
                 playerWallet.CollectMoney(12);
                 paidForVirusOnce = false;
+                GetComponent<randomDestinationAI>().quarantine = true;
             }
             CoBiVirusKo.text = "Đã hết nhiễm virus";
             virusCircle.GetComponent<Image>().fillAmount = 0;
+
         }
         if (TiemBaoNhieu <= 0)
         {
@@ -184,6 +200,33 @@ public class AIBrain : MonoBehaviour
             vacxinCircle.GetComponent<Image>().fillAmount = 0;
         }
 
+        if (BiSot == true)
+        {
+            Pri_TimeMacBenh += Time.deltaTime;
+        }
+        if (Pri_TimeMacBenh >= TimeMacBenh)
+        {
+            Pri_TimeMacBenh = 0f;
+            BiBenh = true;
+            CoBiVirusKo.text = "Đã nhiễm virus: ";
+            DoTayRua = 100;
+            paidForVirusOnce = true;
+            virusCircle.GetComponent<Image>().fillAmount = 1;
+            if (VirusRuaBangSoapTrueSaniFalse)
+            {
+                CoBiVirusKo.text += "Diệt bằng xà phòng";
+            }
+            else
+            {
+                CoBiVirusKo.text += "Diệt bằng nước rửa tay";
+            }
+        }
+        if (DenkhuCachLy == true)
+        {
+            BiSot = false;
+            CoBiSotKhong.text = "Không sốt";
+            Pri_TimeMacBenh = 0;
+        }
     }
     // Update is called once per frame
     public void GotHitBy(string bulletName = "", float damage = 0f)
@@ -209,11 +252,11 @@ public class AIBrain : MonoBehaviour
         }
         if (bulletName.Contains("sy") && NeedTiemPhong)
         {
-            Debug.Log("chua sy " + bulletName);
             for (int i = 0; i < bulletName.Length; i++)
             {
                 if (char.IsDigit(bulletName[i]) && bulletName[i].ToString() == (BenhTiemPhong).ToString())
                 {
+                    TiemBaoNhieu -= damage;
                     vacxinCircle.GetComponent<Image>().fillAmount -= (damage / 100);
                 }
             }
@@ -239,5 +282,43 @@ public class AIBrain : MonoBehaviour
         yield return new WaitForSeconds(time);
         forceField.SetActive(false);
         haveJustDamaged = false;
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (GameObject.FindGameObjectWithTag("ShieldForPlayer").GetComponent<SpriteRenderer>().enabled == false)
+            {
+                if (GameObject.FindGameObjectWithTag("MaskForPlayer").GetComponent<SpriteRenderer>().enabled == false)
+                {
+                    Debug.Log("Cả hai đều không đeo mặt nạ, đáng ra không thể chạm được đến đây nhưng không sao");
+                    if (other.gameObject.GetComponent<Enemy>() != null)
+                    {
+                        other.gameObject.GetComponent<Enemy>().health = -10;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Có khẩu trang nhưng không có tấm chắn, đáng ra không thể chạm được đến đây nhưng không sao");
+                    // other.gameObject.GetComponent<Enemy>().TakeDamage(60);
+                    // StartCoroutine(Forcefield(.3f));
+                }
+            }
+            else
+            {
+                if (GameObject.FindGameObjectWithTag("MaskForPlayer").GetComponent<SpriteRenderer>().enabled == false)
+                {
+                    Debug.Log("Có tấm chắn nhưng không có mặt nạ");
+                    other.gameObject.GetComponent<Enemy>().TakeDamage(130);
+                    StartCoroutine(Forcefield(.3f));
+                }
+                else
+                {
+                    Debug.Log("Có cả 2 cơ à, gắt nhỉ");
+                    other.gameObject.GetComponent<Enemy>().TakeDamage(20);
+                    StartCoroutine(Forcefield(.3f));
+                }
+            }
+        }
     }
 }

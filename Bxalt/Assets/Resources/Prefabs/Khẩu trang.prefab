@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 56463504598955682}
   - component: {fileID: 56463504598955685}
   m_Layer: 0
-  m_Name: bandage
+  m_Name: "Kh\u1EA9u trang"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78937acd051ac474d943e45a58e7669b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HowMany: 15
+  HowMany: 100
   isHealItems: 1
   isReloadItem: 0
   isInCreaseMaxHealth: 0
@@ -51,8 +51,8 @@ MonoBehaviour:
   plusHowManyOrMultipliHowMany: 1
   isNade: 0
   isIncreaseSpeedItem: 0
-  isKhauTrang: 0
+  isKhauTrang: 1
   Index: 1
   PlayerHealth: {fileID: 0}
-  mieuTa: "S\xE1t khu\u1EA9n kh\u1EA9u trang"
+  mieuTa: "Thay kh\u1EA9u trang"
   nade: {fileID: 0}
