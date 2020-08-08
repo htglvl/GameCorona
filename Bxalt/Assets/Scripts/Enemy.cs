@@ -86,10 +86,6 @@ public class Enemy : MonoBehaviour
                 quarantineTime = GameObject.FindObjectOfType<randomDestinationAI>().quarantineTime;
 
             }
-
-
-
-
             //FindObjectOfType<GameManager>().EndGame();
             //GetComponent<PlayerTopDownMovement>().enabled = false;
         }

@@ -6,28 +6,24 @@ using TMPro;
 
 public class AIBrain : MonoBehaviour
 {
-    public GameObject Mask, Shield, MedicHat, Canvas, panel, shieldCircle, vacxinCircle, virusCircle, forceField;
+    public GameObject Mask, Shield, MedicHat, Canvas, panel, TayBanCircle, virusCircle, SotCircle, forceField, sani, gianCach;
     money playerWallet;
-    public bool BiBenh, VirusRuaBangSoapTrueSaniFalse, NeedTiemPhong, daxetnghiem, haveJustDamaged = false, BiSot;
-    public int BenhTiemPhong;
-    public float phantramnguoiBiBenh = 0.5f, phanTramNguoiBiSot = 0.3f, phanTramNguoiCoMask = 0.5f, phanTramNguoiCoShield = 0.5f, phanTramNguoiCoMedicHat = 0.5f, phantramnguoicanTiemPhong = 0.5f, PercentSickCleanBySoapOtherUseSani = 0.5f, TiemBaoNhieu = 100f, DoTayRua = 100f, detectRadius, TimeMacBenh = 60.0f;
-    public string[] TenBenhTiemPhong;
-    public TextMeshProUGUI TextTiemPhong, CoBiVirusKo, CoBiSotKhong, DTR, TBN;
-
-    public bool paidForVacxinOnce = true;
-    public bool paidForVirusOnce = true;
-    private float Pri_TimeMacBenh = 0.0f;
+    public bool BiBenh, BiBan, daxetnghiem, haveJustDamaged = false, BiSot;
+    public float phantramnguoiTayBan = 0.5f, phanTramNguoiBiSot = 0.3f, phanTramNguoiCoMask = 0.5f, phanTramNguoiCoShield = 0.5f, phanTramNguoiCoMedicHat = 0.5f, phantramnguoicoSani = .3f, phanTramNguoiBiBenh = .3f, phanTramNguoiBietGianCach = 0.4f, DoTayRua = 100f, detectRadius;
+    public TextMeshProUGUI CoBiBanko, CoBiSotKhong, CoBiBenhKo;
+    private float DoBaoVe = 0f, pri_SotTime;
     public bool DenkhuCachLy;
-
+    public float DiemBaoVeCuaMask = .3f, DiemBaoVeCuaSani = .35f, DiemBaoVeCuaGianCach = .35f, DiemTruCuaTayBan = 0.35f, DiemTruCuaSot = 0.5f, SotTime;
     // Start is called before the first frame update
     void Start()
     {
-        Pri_TimeMacBenh = 0;
         playerWallet = Transform.FindObjectOfType<money>();
         forceField.SetActive(false);
         Mask.SetActive(Random.value < phanTramNguoiCoMask ? true : false);
         MedicHat.SetActive(Random.value < phanTramNguoiCoMedicHat ? true : false);
         Shield.SetActive(Random.value < phanTramNguoiCoShield ? true : false);
+        sani.SetActive(Random.value < phantramnguoicoSani ? true : false);
+        gianCach.SetActive(Random.value < phanTramNguoiBietGianCach ? true : false);
         if (Random.value < phanTramNguoiBiSot)
         {
             CoBiSotKhong.text = "Bị sốt, cần đưa đi cách ly";
@@ -38,56 +34,55 @@ public class AIBrain : MonoBehaviour
             CoBiSotKhong.text = "Không sốt";
             BiSot = false;
         }
-        if (Random.value < phantramnguoiBiBenh)
+        if (Random.value < phantramnguoiTayBan)
         {
             //Debug.Log("bibenh");
-            CoBiVirusKo.text = "Đã nhiễm virus: ";
-            BiBenh = true;
-            if (Random.value < PercentSickCleanBySoapOtherUseSani)
-            {
-                //Debug.Log("useSoap");
-                CoBiVirusKo.text += "Diệt bằng xà phòng";
-                VirusRuaBangSoapTrueSaniFalse = true;
-            }
-            else
-            {
-                //Debug.Log("useSani");
-                CoBiVirusKo.text += "Diệt bằng nước rửa tay";
-                VirusRuaBangSoapTrueSaniFalse = false;
-            }
+            CoBiBanko.text = "Tay bẩn, rửa bằng nước rửa tay";
+            BiBan = true;
         }
         else
         {
             //Debug.Log("ko benh");
-            BiBenh = false;
-            CoBiVirusKo.text = "Không nhiễm virus";
+            BiBan = false;
+            CoBiBanko.text = "Tay sạch";
         }
-        if (Random.value < phantramnguoicanTiemPhong)
+        if (Random.value < phanTramNguoiBiBenh)
         {
-            //Debug.Log("canTiemPhong");
-            TextTiemPhong.text = "Cần tiêm phòng ";
-            NeedTiemPhong = true;
-            BenhTiemPhong = Random.Range(1, 9);
+            Debug.Log("bibenh");
+            CoBiBenhKo.text = "Đã nhiễm COVID-19, cần cách ly";
+            BiBenh = true;
         }
         else
         {
-            //Debug.Log("koCanTiemPhong");
-            TextTiemPhong.text = "Không cần tiêm phòng ";
-            NeedTiemPhong = false;
+            CoBiBenhKo.text = "Không nhiễm COVID-19";
+            Debug.Log("ko benh");
+            BiBenh = false;
         }
-        for (int i = 0; i < TenBenhTiemPhong.Length; i++)
-        {
-            if (i + 1 == BenhTiemPhong)
-            {
-                TextTiemPhong.text += TenBenhTiemPhong[i];
-            }
-        }
-        TextTiemPhong.gameObject.SetActive(false);
-        TextTiemPhong.gameObject.SetActive(false);
         panel.SetActive(false);
     }
     private void Update()
     {
+        DoBaoVe = 0;
+        if (Mask.activeInHierarchy == true || Shield.activeInHierarchy == true)
+        {
+            DoBaoVe += DiemBaoVeCuaMask;
+        }
+        if (sani.activeInHierarchy == true)
+        {
+            DoBaoVe += DiemBaoVeCuaSani;
+        }
+        if (gianCach.activeInHierarchy == true)
+        {
+            DoBaoVe += DiemBaoVeCuaGianCach;
+        }
+        if (BiBan == true)
+        {
+            DoBaoVe -= DiemTruCuaTayBan;
+        }
+        if (BiSot == true)
+        {
+            DoBaoVe -= DiemTruCuaSot;
+        }
         Collider2D[] otherCivillan = Physics2D.OverlapCircleAll(transform.position, detectRadius);
         for (int i = 0; i < otherCivillan.Length; i++)
         {
@@ -95,28 +90,18 @@ public class AIBrain : MonoBehaviour
             {
                 if (otherCivillan[i].GetComponent<AIBrain>())
                 {
-                    if (otherCivillan[i].GetComponent<AIBrain>().BiBenh && !BiBenh && !shieldCircle.activeInHierarchy)
+                    if (otherCivillan[i].GetComponent<AIBrain>().BiBenh && !BiBenh && Random.value > DoBaoVe)
                     {
                         BiBenh = true;
-                        CoBiVirusKo.text = "Đã nhiễm virus: ";
-                        DoTayRua = 100;
-                        paidForVirusOnce = true;
+                        CoBiBanko.text = "Đã nhiễm COVID-19, cần cách ly";
                         virusCircle.GetComponent<Image>().fillAmount = 1;
-                        if (VirusRuaBangSoapTrueSaniFalse)
-                        {
-                            CoBiVirusKo.text += "Diệt bằng xà phòng";
-                        }
-                        else
-                        {
-                            CoBiVirusKo.text += "Diệt bằng nước rửa tay";
-                        }
                     }
                 }
                 if (otherCivillan[i].gameObject.tag == "Player" && BiBenh)
                 {
                     if (GameObject.FindGameObjectWithTag("ShieldForPlayer").GetComponent<SpriteRenderer>().enabled == false)
                     {
-                        if (!haveJustDamaged)
+                        if (haveJustDamaged == false)
                         {
                             haveJustDamaged = true;
                             otherCivillan[i].GetComponent<Enemy>().TakeDamage(20);
@@ -126,11 +111,10 @@ public class AIBrain : MonoBehaviour
                 }
             }
         }
-
         Canvas.transform.LookAt(Canvas.transform.position + Vector3.forward);
-        shieldCircle.transform.LookAt(shieldCircle.transform.position + Vector3.forward);
+        TayBanCircle.transform.LookAt(TayBanCircle.transform.position + Vector3.forward);
         virusCircle.transform.LookAt(virusCircle.transform.position + Vector3.forward);
-        vacxinCircle.transform.LookAt(vacxinCircle.transform.position + Vector3.forward);
+        SotCircle.transform.LookAt(SotCircle.transform.position + Vector3.forward);
         if (daxetnghiem)
         {
             if (Input.GetKey(KeyCode.Space))
@@ -141,13 +125,13 @@ public class AIBrain : MonoBehaviour
             {
                 panel.SetActive(false);
             }
-            if ((MedicHat.activeSelf && Shield.activeSelf) || (!MedicHat.activeSelf && (Mask.activeSelf || Shield.activeSelf)))
+            if (BiBan == true)
             {
-                shieldCircle.SetActive(true);
+                TayBanCircle.SetActive(true);
             }
             else
             {
-                shieldCircle.SetActive(false);
+                TayBanCircle.SetActive(false);
             }
             if (BiBenh)
             {
@@ -157,75 +141,38 @@ public class AIBrain : MonoBehaviour
             {
                 virusCircle.SetActive(false);
             }
-            if (NeedTiemPhong)
+            if (BiSot == true)
             {
-                vacxinCircle.SetActive(true);
+                SotCircle.SetActive(true);
             }
             else
             {
-                vacxinCircle.SetActive(false);
+                SotCircle.SetActive(false);
             }
         }
         else
         {
-            shieldCircle.SetActive(false);
+            TayBanCircle.SetActive(false);
             virusCircle.SetActive(false);
-            vacxinCircle.SetActive(false);
+            SotCircle.SetActive(false);
         }
-
         if (DoTayRua <= 0)
         {
             DoTayRua = 0;
-            BiBenh = false;
-            if (paidForVirusOnce)
-            {
-                playerWallet.CollectMoney(12);
-                paidForVirusOnce = false;
-                GetComponent<randomDestinationAI>().quarantine = true;
-            }
-            CoBiVirusKo.text = "Đã hết nhiễm virus";
-            virusCircle.GetComponent<Image>().fillAmount = 0;
-
-        }
-        if (TiemBaoNhieu <= 0)
-        {
-            TiemBaoNhieu = 0;
-            NeedTiemPhong = false;
-            if (paidForVacxinOnce)
-            {
-                playerWallet.CollectMoney(8);
-                paidForVacxinOnce = false;
-            }
-            TextTiemPhong.text = "Không cần tiêm phòng";
-            vacxinCircle.GetComponent<Image>().fillAmount = 0;
+            BiBan = false;
+            CoBiBanko.text = "Tay sạch";
+            TayBanCircle.GetComponent<Image>().fillAmount = 0;
         }
 
-        if (BiSot == true)
+        if (BiSot)
         {
-            Pri_TimeMacBenh += Time.deltaTime;
+            pri_SotTime += Time.deltaTime;
         }
-        if (Pri_TimeMacBenh >= TimeMacBenh)
+        if (pri_SotTime >= SotTime)
         {
-            Pri_TimeMacBenh = 0f;
-            BiBenh = true;
-            CoBiVirusKo.text = "Đã nhiễm virus: ";
-            DoTayRua = 100;
-            paidForVirusOnce = true;
-            virusCircle.GetComponent<Image>().fillAmount = 1;
-            if (VirusRuaBangSoapTrueSaniFalse)
-            {
-                CoBiVirusKo.text += "Diệt bằng xà phòng";
-            }
-            else
-            {
-                CoBiVirusKo.text += "Diệt bằng nước rửa tay";
-            }
-        }
-        if (DenkhuCachLy == true)
-        {
+            pri_SotTime = 0;
             BiSot = false;
-            CoBiSotKhong.text = "Không sốt";
-            Pri_TimeMacBenh = 0;
+            BiBenh = true;
         }
     }
     // Update is called once per frame
@@ -236,40 +183,33 @@ public class AIBrain : MonoBehaviour
             if (daxetnghiem == false)
             {
                 daxetnghiem = true;
-                TextTiemPhong.gameObject.SetActive(true);
-                CoBiVirusKo.gameObject.SetActive(true);
+                //CoBiBanko.gameObject.SetActive(true);
             }
         }
-        if (bulletName.Contains("kt") && Mask.activeSelf == false)
+        if (bulletName.Contains("kt") && Mask.activeInHierarchy == false)
         {
             Mask.SetActive(true);
             playerWallet.CollectMoney(3);
         }
-        if (bulletName.Contains("S") && Shield.activeSelf == false)
+        if (bulletName.Contains("S") && Shield.activeInHierarchy == false)
         {
             Shield.SetActive(true);
             playerWallet.CollectMoney(5);
         }
-        if (bulletName.Contains("sy") && NeedTiemPhong)
-        {
-            for (int i = 0; i < bulletName.Length; i++)
-            {
-                if (char.IsDigit(bulletName[i]) && bulletName[i].ToString() == (BenhTiemPhong).ToString())
-                {
-                    TiemBaoNhieu -= damage;
-                    vacxinCircle.GetComponent<Image>().fillAmount -= (damage / 100);
-                }
-            }
-        }
-        if (bulletName.Contains("soap") && VirusRuaBangSoapTrueSaniFalse && BiBenh)
+        if (bulletName.Contains("sani") && BiBan)
         {
             DoTayRua -= damage;
-            virusCircle.GetComponent<Image>().fillAmount -= (damage / 100);
+            TayBanCircle.GetComponent<Image>().fillAmount -= (damage / 100);
         }
-        if (bulletName.Contains("sani") && VirusRuaBangSoapTrueSaniFalse == false && BiBenh)
+        if (bulletName.Contains("box") && sani.activeInHierarchy == false)
         {
-            DoTayRua -= damage;
-            virusCircle.GetComponent<Image>().fillAmount -= (damage / 100);
+            sani.SetActive(true);
+            playerWallet.CollectMoney(5);
+        }
+        if (bulletName.Contains("gianCach") && gianCach.activeInHierarchy == false)
+        {
+            gianCach.SetActive(true);
+            playerWallet.CollectMoney(7);
         }
     }
     private void OnDrawGizmos()

@@ -87,7 +87,7 @@ public class gunStats : MonoBehaviour
                 else
                 {
                     Transform gunHolder = player.GetComponentInChildren<PlayerTopDownShooting>().transform.parent;
-                    Destroy(player.GetComponentInChildren<PlayerTopDownShooting>().gameObject);
+                    player.GetComponentInChildren<PlayerTopDownShooting>().gameObject.SetActive(false);
                     Instantiate(gun.weaponStats.gameObject, gunHolder);
                     GameObject.FindObjectOfType<CameraController>().scope = false;
 

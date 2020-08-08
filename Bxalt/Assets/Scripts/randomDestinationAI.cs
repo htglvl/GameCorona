@@ -8,7 +8,7 @@ public class randomDestinationAI : MonoBehaviour
 {
     public Image QuarantineImage, StopImage;
     IAstarAI ai;
-    public Vector2 TopLeft, BottomRight, pos, topleftQua, BottomRightQua;
+    public Vector2 TopLeft, BottomRight, pos, topleftQua, BottomRightQua, tamChia, bottomRightQuaTopLeft, topRightQuaBottomLeft, topLeftQuaBottomRight, bottomLeftQuaTopRight;
     CircleCollider2D cc2D;
     public bool stop, quarantine;
     public float quarantineTime, stopTime;
@@ -67,6 +67,8 @@ public class randomDestinationAI : MonoBehaviour
             if (denKhuCachLy)
             {
                 Pri_quarantineTime -= Time.deltaTime;
+                GetComponent<AIBrain>().BiSot = false;
+                GetComponent<AIBrain>().BiBenh = false;
             }
         }
         if (Pri_quarantineTime <= 0)
@@ -99,8 +101,36 @@ public class randomDestinationAI : MonoBehaviour
     {
         do
         {
-            pos.x = Random.Range(topleftQua.x, BottomRightQua.x);
-            pos.y = Random.Range(BottomRightQua.y, topleftQua.y);
+            if (transform.position.x < tamChia.x)
+            {
+                if (transform.position.y < tamChia.y)
+                {
+                    //goc duoi trai 
+                    pos.x = Random.Range(TopLeft.x, topRightQuaBottomLeft.x);
+                    pos.y = Random.Range(BottomRight.y, topRightQuaBottomLeft.y);
+                }
+                else
+                {
+                    //goc tren trai
+                    pos.x = Random.Range(TopLeft.x, bottomRightQuaTopLeft.x);
+                    pos.y = Random.Range(bottomRightQuaTopLeft.y, TopLeft.y);
+                }
+            }
+            else
+            {
+                if (transform.position.y < tamChia.y)
+                {
+                    // goc duoi phai
+                    pos.x = Random.Range(topLeftQuaBottomRight.x, BottomRight.x);
+                    pos.y = Random.Range(BottomRight.y, topLeftQuaBottomRight.y);
+                }
+                else
+                {
+                    // goc tren phai
+                    pos.x = Random.Range(bottomLeftQuaTopRight.x, BottomRight.x);
+                    pos.y = Random.Range(bottomLeftQuaTopRight.y, TopLeft.y);
+                }
+            }
         } while (Physics2D.OverlapCircle(pos, cc2D.radius) != null);
         ai.destination = pos;
     }
@@ -117,7 +147,11 @@ public class randomDestinationAI : MonoBehaviour
     {
         Gizmos.DrawSphere(TopLeft, 1f);
         Gizmos.DrawSphere(BottomRight, 1f);
-        Gizmos.DrawSphere(topleftQua, 1f);
-        Gizmos.DrawSphere(BottomRightQua, 1f);
+        Gizmos.DrawSphere(tamChia, 1f);
+        Gizmos.DrawSphere(bottomRightQuaTopLeft, 1f);
+        Gizmos.DrawSphere(topRightQuaBottomLeft, 1f);
+        Gizmos.DrawSphere(topLeftQuaBottomRight, 1f);
+        Gizmos.DrawSphere(bottomLeftQuaTopRight, 1f);
+
     }
 }

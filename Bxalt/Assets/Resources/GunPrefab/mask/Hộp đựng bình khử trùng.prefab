@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 1327734860931152990}
   - component: {fileID: 7016213642702925818}
   m_Layer: 0
-  m_Name: "H\u1ED9p kh\u1EA9u trang"
+  m_Name: "H\u1ED9p \u0111\u1EF1ng b\xECnh kh\u1EED tr\xF9ng"
   m_TagString: weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,7 +362,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   haveSound: 1
   holdOneHandTrueTwoHandFalse: 0
-  sound: mask
+  IsG: 0
+  IsC: 0
+  sound: soap
   Name: 
   scopeSound: ButtonHover
   BurstSound: Map&Buy
@@ -406,3 +408,4 @@ MonoBehaviour:
   isreloadingShotgun: 0
   NormalSpreadIndicator: {r: 1, g: 1, b: 1, a: 1}
   CantShootIndicator: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
+  CanControl: 0

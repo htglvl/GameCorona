@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
                 Pause();
             }
         }
-        if (trackAIStats.SoAI == trackAIStats.SonguoiDcBaoVe && trackAIStats.SonguoiCanTiemPhong == 0 && trackAIStats.SoNguoiBiBenh == 0 && trackAIStats.SoAI != 0)
+        if (trackAIStats.SoAI == trackAIStats.SonguoiDcBaoVe && trackAIStats.SoNguoiBiBan == 0 && trackAIStats.SoNguoiBiBenh == 0 && trackAIStats.SoAI != 0)
         {
             EndGame();
         }

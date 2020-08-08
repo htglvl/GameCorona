@@ -6,8 +6,8 @@ using TMPro;
 public class TrackAIStats : MonoBehaviour
 {
     AIBrain[] AIBrains;
-    public float SoAI, SonguoiDcBaoVe, SonguoiCanTiemPhong, SoNguoiBiBenh;
-    public TextMeshProUGUI SoAIText, SonguoiDcBaoVeText, SonguoiCanTiemPhongText, SoNguoiBiBenhText;
+    public float SoAI, SonguoiDcBaoVe, SoNguoiBiBenh, SoNguoiBiBan;
+    public TextMeshProUGUI SoAIText, SonguoiDcBaoVeText, SoNguoiBiBenhText, SoNguoiBiBanText;
     bool DoneLateStart;
     // Start is called before the first frame update
     void Start()
@@ -23,32 +23,31 @@ public class TrackAIStats : MonoBehaviour
         {
             SoAIText.text = cal("SoAI").ToString();
             SonguoiDcBaoVeText.text = cal("SonguoiDcBaoVe").ToString();
-            SonguoiCanTiemPhongText.text = cal("SonguoiCanTiemPhong").ToString();
             SoNguoiBiBenhText.text = cal("SoNguoiBiBenh").ToString();
-
+            SoNguoiBiBanText.text = cal("SoNguoiBiBan").ToString();
         }
     }
     public float cal(string goiGi)
     {
         SoAI = 0;
         SonguoiDcBaoVe = 0;
-        SonguoiCanTiemPhong = 0;
         SoNguoiBiBenh = 0;
+        SoNguoiBiBan = 0;
 
         SoAI = AIBrains.Length;
         foreach (AIBrain AI in AIBrains)
         {
-            if ((AI.MedicHat.activeSelf && AI.Shield.activeSelf) || (!AI.MedicHat.activeSelf && (AI.Mask.activeSelf || AI.Shield.activeSelf)))
+            if ((AI.Shield.activeInHierarchy || AI.Mask.activeInHierarchy) && AI.sani.activeInHierarchy && AI.gianCach.activeInHierarchy)
             {
                 SonguoiDcBaoVe++;
-            }
-            if (AI.NeedTiemPhong)
-            {
-                SonguoiCanTiemPhong++;
             }
             if (AI.BiBenh)
             {
                 SoNguoiBiBenh++;
+            }
+            if (AI.BiBan)
+            {
+                SoNguoiBiBan++;
             }
         }
         if (goiGi == "SoAI")
@@ -59,13 +58,13 @@ public class TrackAIStats : MonoBehaviour
         {
             return SonguoiDcBaoVe;
         }
-        else if (goiGi == "SonguoiCanTiemPhong")
-        {
-            return SonguoiCanTiemPhong;
-        }
         else if (goiGi == "SoNguoiBiBenh")
         {
             return SoNguoiBiBenh;
+        }
+        else if (goiGi == "SoNguoiBiBan")
+        {
+            return SoNguoiBiBan;
         }
         else
         {

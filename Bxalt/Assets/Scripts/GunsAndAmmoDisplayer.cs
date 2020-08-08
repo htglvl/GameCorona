@@ -9,7 +9,7 @@ public class GunsAndAmmoDisplayer : MonoBehaviour
     public TextMeshProUGUI gunName, gunAmmo;
     public PlayerTopDownShooting Player;
     CameraController Camera;
-    public Image Scope, Burst, sanitizer, soap, syring, mask, thermo, nothing, saniFore, soapFore, syringFore, MaskFore, ThermoFore, nothingFore;
+    public Image Scope, Burst, sanitizer, soap, mask, thermo, C, G, nothing, saniFore, soapFore, MaskFore, ThermoFore, CFore, GFore, nothingFore;
     Image currentAmmoType;
     public GameObject ImageChild;
     private float currentReloadingTime;
@@ -24,7 +24,7 @@ public class GunsAndAmmoDisplayer : MonoBehaviour
     {
         if (StillAlive)
         {
-            if (Player != null)
+            if (Player != null && Player.gameObject.activeSelf == true)
             {
                 //string OnlyName = Player.gameObject.name;
                 gunName.text = Player.gameObject.name.Replace("(Clone)", "");
@@ -120,13 +120,7 @@ public class GunsAndAmmoDisplayer : MonoBehaviour
         {
             image.enabled = false;
         }
-        if (sound == "sy")
-        {
-            syring.enabled = true;
-            syringFore.enabled = true;
-            currentAmmoType = syringFore;
-        }
-        else if (sound == "sani")
+        if (sound == "sani")
         {
             saniFore.enabled = true;
             sanitizer.enabled = true;
@@ -149,6 +143,19 @@ public class GunsAndAmmoDisplayer : MonoBehaviour
             mask.enabled = true;
             MaskFore.enabled = true;
             currentAmmoType = MaskFore;
+        }
+        else if (sound == "C")
+        {
+            C.enabled = true;
+            CFore.enabled = true;
+            currentAmmoType = CFore;
+
+        }
+        else if (sound == "G")
+        {
+            G.enabled = true;
+            GFore.enabled = true;
+            currentAmmoType = GFore;
         }
         else
         {

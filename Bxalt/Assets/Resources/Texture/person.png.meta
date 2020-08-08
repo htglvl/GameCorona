@@ -44,6 +44,30 @@ TextureImporter:
   - first:
       213: -6247075739657902213
     second: body
+  - first:
+      213: -1266235679954302461
+    second: person_0
+  - first:
+      213: 3719922597921651827
+    second: person_1
+  - first:
+      213: -1918943386427310983
+    second: person_2
+  - first:
+      213: 6557288073542464520
+    second: person_3
+  - first:
+      213: 6770317720716446816
+    second: person_4
+  - first:
+      213: 3375520701203768693
+    second: person_5
+  - first:
+      213: -6247075739657902213
+    second: person_6
+  - first:
+      213: 286518434546666578
+    second: sanitizer
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -164,7 +188,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mask
+      name: person_0
       rect:
         serializedVersion: 2
         x: 0
@@ -185,7 +209,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shield
+      name: person_1
       rect:
         serializedVersion: 2
         x: 64
@@ -206,49 +230,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rightHand
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e74c46d1548cd8960800000000000000
-      internalID: 7605955544870077566
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: leftHand
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0db9bfc6f28f966b0800000000000000
-      internalID: -5302434203676468272
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hat
+      name: person_4
       rect:
         serializedVersion: 2
         x: 256
@@ -269,7 +251,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: medic
+      name: person_5
       rect:
         serializedVersion: 2
         x: 320
@@ -290,7 +272,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: body
+      name: person_6
       rect:
         serializedVersion: 2
         x: 384
@@ -306,6 +288,69 @@ TextureImporter:
       bones: []
       spriteID: b77eab496bded49a0800000000000000
       internalID: -6247075739657902213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: person_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97c3ae3382b8e55e0800000000000000
+      internalID: -1918943386427310983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: person_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8047769c2ca200b50800000000000000
+      internalID: 6557288073542464520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sanitizer
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c41c88ffae9f300800000000000000
+      internalID: 286518434546666578
       vertices: []
       indices: 
       edges: []

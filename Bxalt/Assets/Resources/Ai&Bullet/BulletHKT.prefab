@@ -143,6 +143,7 @@ MonoBehaviour:
   IsPlayer: 0
   DeathTick: 0
   isBullet: 1
+  DanhSo: {fileID: 0}
 --- !u!114 &6868892169527250588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minspeed: 10
-  Name: kt
+  Name: box
   maxspeed: 20
   fromPlayer: 1
   damage: 12
@@ -208,8 +209,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7640702691783857680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.22485, y: 0.22485, z: 0.22485}
+  m_LocalPosition: {x: 0.12, y: 0.01, z: 0}
+  m_LocalScale: {x: 0.16373128, y: 0.16373128, z: 0.16373128}
   m_Children:
   - {fileID: 8531924406173535860}
   m_Father: {fileID: 1597587265668190900}
@@ -254,7 +255,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2339184333742559935, guid: 8e5c9793bede61e4aaaae84b8912389d,
+  m_Sprite: {fileID: -8719028006895423778, guid: 8e5c9793bede61e4aaaae84b8912389d,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

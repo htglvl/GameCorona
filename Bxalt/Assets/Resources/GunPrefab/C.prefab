@@ -51,7 +51,7 @@ MonoBehaviour:
   IsG: 0
   IsC: 1
   sound: C
-  Name: 
+  Name: gianCach
   scopeSound: ButtonHover
   BurstSound: Map&Buy
   AutoTrueHayOnetapFalse: 1

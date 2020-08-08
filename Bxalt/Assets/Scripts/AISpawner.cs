@@ -12,7 +12,6 @@ public class AISpawner : MonoBehaviour
     {
         StartCoroutine(Spawn());
     }
-
     IEnumerator Spawn()
     {
         for (int i = 0; i < HowManyAIInScenePatrol; i++)
