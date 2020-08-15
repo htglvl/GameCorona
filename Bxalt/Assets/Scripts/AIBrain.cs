@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using Pathfinding;
 public class AIBrain : MonoBehaviour
 {
-    public GameObject Mask, Shield, MedicHat, Canvas, panel, TayBanCircle, virusCircle, SotCircle, forceField, sani, gianCach;
+    public GameObject Mask, Shield, MedicHat, Canvas, panel, TayBanCircle, virusCircle, SotCircle, forceField, sani, gianCach, maskUI, shieldUI, saniUI;
     money playerWallet;
     public bool BiBenh, BiBan, daxetnghiem, haveJustDamaged = false, BiSot;
     public float phantramnguoiTayBan = 0.5f, phanTramNguoiBiSot = 0.3f, phanTramNguoiCoMask = 0.5f, phanTramNguoiCoShield = 0.5f, phanTramNguoiCoMedicHat = 0.5f, phantramnguoicoSani = .3f, phanTramNguoiBiBenh = .3f, phanTramNguoiBietGianCach = 0.4f, DoTayRua = 100f, detectRadius;
@@ -14,9 +14,13 @@ public class AIBrain : MonoBehaviour
     private float DoBaoVe = 0f, pri_SotTime;
     public bool DenkhuCachLy;
     public float DiemBaoVeCuaMask = .3f, DiemBaoVeCuaSani = .35f, DiemBaoVeCuaGianCach = .35f, DiemTruCuaTayBan = 0.35f, DiemTruCuaSot = 0.5f, SotTime;
+
+    public Animator AIanim, maskAnim, shieldAnim, saniAnim;
+    IAstarAI ai;
     // Start is called before the first frame update
     void Start()
     {
+        ai = GetComponent<IAstarAI>();
         playerWallet = Transform.FindObjectOfType<money>();
         forceField.SetActive(false);
         Mask.SetActive(Random.value < phanTramNguoiCoMask ? true : false);
@@ -104,7 +108,7 @@ public class AIBrain : MonoBehaviour
                         if (haveJustDamaged == false)
                         {
                             haveJustDamaged = true;
-                            otherCivillan[i].GetComponent<Enemy>().TakeDamage(20);
+                            otherCivillan[i].transform.parent.GetComponent<Enemy>().TakeDamage(20);
                         }
                         StartCoroutine(Forcefield(.3f));
                     }
@@ -115,6 +119,9 @@ public class AIBrain : MonoBehaviour
         TayBanCircle.transform.LookAt(TayBanCircle.transform.position + Vector3.forward);
         virusCircle.transform.LookAt(virusCircle.transform.position + Vector3.forward);
         SotCircle.transform.LookAt(SotCircle.transform.position + Vector3.forward);
+        maskUI.transform.LookAt(maskUI.transform.position + Vector3.forward);
+        shieldUI.transform.LookAt(shieldUI.transform.position + Vector3.forward);
+        saniUI.transform.LookAt(saniUI.transform.position + Vector3.forward);
         if (daxetnghiem)
         {
             if (Input.GetKey(KeyCode.Space))
@@ -174,6 +181,61 @@ public class AIBrain : MonoBehaviour
             BiSot = false;
             BiBenh = true;
         }
+        Animate();
+        if (Mask.activeInHierarchy)
+        {
+            if (maskUI.activeInHierarchy == false)
+            {
+                maskUI.SetActive(true);
+                sync();
+                Debug.Log("mask false -> true");
+            }
+        }
+        else
+        {
+            if (maskUI.activeInHierarchy == true)
+            {
+                maskUI.SetActive(false);
+                sync();
+                Debug.Log("mask true -> false");
+            }
+        }
+        if (Shield.activeInHierarchy)
+        {
+            if (shieldUI.activeInHierarchy == false)
+            {
+                shieldUI.SetActive(true);
+                sync();
+                Debug.Log("shield false -> true");
+            }
+        }
+        else
+        {
+            if (shieldUI.activeInHierarchy == true)
+            {
+                shieldUI.SetActive(false);
+                sync();
+                Debug.Log("shield true -> false");
+            }
+        }
+        if (sani.activeInHierarchy)
+        {
+            if (saniUI.activeInHierarchy == false)
+            {
+                saniUI.SetActive(true);
+                sync();
+                Debug.Log("sani false -> true");
+            }
+        }
+        else
+        {
+            if (saniUI.activeInHierarchy == true)
+            {
+                saniUI.SetActive(false);
+                sync();
+                Debug.Log("sani true -> false");
+            }
+        }
     }
     // Update is called once per frame
     public void GotHitBy(string bulletName = "", float damage = 0f)
@@ -212,6 +274,29 @@ public class AIBrain : MonoBehaviour
             playerWallet.CollectMoney(7);
         }
     }
+
+    void Animate()
+    {
+        AIanim.SetFloat("Horizontal", Mathf.Clamp(ai.velocity.x, -0.5f, 0.5f));
+        AIanim.SetFloat("Vertical", Mathf.Clamp(ai.velocity.y, -0.5f, 0.5f));
+
+        maskAnim.SetFloat("Horizontal", Mathf.Clamp(ai.velocity.x, -0.5f, 0.5f));
+        maskAnim.SetFloat("Vertical", Mathf.Clamp(ai.velocity.y, -0.5f, 0.5f));
+
+        shieldAnim.SetFloat("Horizontal", Mathf.Clamp(ai.velocity.x, -0.5f, 0.5f));
+        shieldAnim.SetFloat("Vertical", Mathf.Clamp(ai.velocity.y, -0.5f, 0.5f));
+
+        saniAnim.SetFloat("Horizontal", Mathf.Clamp(ai.velocity.x, -0.5f, 0.5f));
+        saniAnim.SetFloat("Vertical", Mathf.Clamp(ai.velocity.y, -0.5f, 0.5f));
+    }
+    void sync()
+    {
+        AIanim.Play("Movement", -1, 0);
+        maskAnim.Play("Blend Tree", -1, 0);
+        shieldAnim.Play("Blend Tree", -1, 0);
+        saniAnim.Play("Blend Tree", -1, 0);
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, detectRadius);

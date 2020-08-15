@@ -88,6 +88,7 @@ public class items : MonoBehaviour
             if (isKhauTrang)
             {
                 GameObject.FindGameObjectWithTag("MaskForPlayer").GetComponent<SpriteRenderer>().enabled = true;
+                PlayerHealth.gameObject.GetComponent<PlayerTopDownMovement>().sync();
             }
             PlayerHealth.health += baonhieu;
         }
@@ -124,6 +125,7 @@ public class items : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("ShieldForPlayer").GetComponent<SpriteRenderer>() != null)
         {
             GameObject.FindGameObjectWithTag("ShieldForPlayer").GetComponent<SpriteRenderer>().enabled = true;
+            PlayerHealth.gameObject.GetComponent<PlayerTopDownMovement>().sync();
         }
         if (GameObject.FindGameObjectWithTag("shieldIconForPlayer").GetComponent<Image>() != null)
         {
