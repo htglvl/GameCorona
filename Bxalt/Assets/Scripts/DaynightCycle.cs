@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.Experimental.Rendering.LWRP;
 
 public class DaynightCycle : MonoBehaviour
 {
     // Start is called before the first frame update
-    public UnityEngine.Experimental.Rendering.Universal.Light2D Sun;
+    public UnityEngine.Rendering.Universal.Light2D Sun;
     public float minIntensity = .4f, maxIntensity = 1.4f, Intensity, timeMultiplyer = 1;
 
     public float hour, day, month, year;

@@ -1515,7 +1515,7 @@ TextureImporter:
       213: 4024214532307829750
     second: syringes_503
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -1535,6 +1535,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1543,12 +1545,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -1566,9 +1568,14 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1620,6 +1627,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -2336,6 +2355,40 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      syringes_2: 1405525121374078087
+      thermometer_25: 3162266416620694618
+      sanitizer_12: 7858338949935214846
+      thermometer_26: 600680349120100727
+      thermometer_28: -7459667253787822373
+      shield_29: -5804954125786773946
+      syringes_0: -8212635036115766254
+      soap_19: 7003323606561643067
+      syringes_3: 1591024529975816570
+      sanitizer_9: 4417333305751855456
+      soap_16: -1679713714818946252
+      sanitizer_11: -3121960465691297733
+      mask_21: -1982630015806117256
+      mask_31: 3486996343489708966
+      syringes_4: -7564840846270272837
+      thermometer_24: -7757891788637988214
+      syringes_5: 1956025945568947186
+      soap_18: 5065214839949481475
+      sanitizer_13: 1522884049161689386
+      soap_14: -2002522944177776018
+      syringes_1: -1019021755087639422
+      syringes_7: -9081604740108991087
+      soap_17: 3950491901657047905
+      mask_27: 8519419500835216079
+      shield_30: -5785398582416168467
+      sanitizer_10: -8719028006895423778
+      soap_15: 3234850894147162621
+      mask_23: -3842064738525965884
+      sanitizer_8: 5407347293508080
+      mask_22: -2339184333742559935
+      soap_20: 1977277486387633414
+      syringes_6: -8939688327989596356
+      nohand_32: 929307123417458149
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 1

@@ -138,7 +138,7 @@ TextureImporter:
       213: 3431656969669775321
     second: Light theme spritesheet 1_44
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -158,6 +158,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -166,12 +168,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -189,9 +191,14 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -231,6 +238,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1199,6 +1230,52 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Light theme spritesheet 1_12: 7326513605543762409
+      Light theme spritesheet 1_2: 959261848191003276
+      Light theme spritesheet 1_32: -6339889485416947469
+      Light theme spritesheet 1_39: -6138798409113109134
+      Light theme spritesheet 1_0: 5953918646605156593
+      Light theme spritesheet 1_29: -8986699409527442982
+      Light theme spritesheet 1_6: -4159002483961407137
+      Light theme spritesheet 1_30: -546638770693876935
+      Light theme spritesheet 1_10: -5353000562721766730
+      Light theme spritesheet 1_35: 8680486747505093636
+      Light theme spritesheet 1_18: 7978337709231464371
+      Light theme spritesheet 1_14: -5386691611469224646
+      Light theme spritesheet 1_34: 7062472561026955446
+      Light theme spritesheet 1_9: -4552699183999650041
+      Light theme spritesheet 1_5: 1195408879370011620
+      Light theme spritesheet 1_36: 2342414515838485233
+      Light theme spritesheet 1_25: -2599848212295581237
+      Light theme spritesheet 1_3: 1803365412068701039
+      Light theme spritesheet 1_1: -6532541684399175644
+      Light theme spritesheet 1_23: -3686330974396812468
+      Light theme spritesheet 1_24: -4638584668335742887
+      Light theme spritesheet 1_21: -3260850691762228536
+      Light theme spritesheet 1_13: -6145745931070361934
+      Light theme spritesheet 1_31: 3356388422150036814
+      Light theme spritesheet 1_37: 3107962541054853588
+      Light theme spritesheet 1_43: 5844306251241216476
+      Light theme spritesheet 1_28: -483144714733006877
+      Light theme spritesheet 1_41: 2909340835892410138
+      Light theme spritesheet 1_33: -6938032832526439817
+      Light theme spritesheet 1_22: 2015246914014876986
+      Light theme spritesheet 1_11: 4124985117748363240
+      Light theme spritesheet 1_7: -6440293093962415026
+      Light theme spritesheet 1_26: -4685923072251854323
+      Light theme spritesheet 1_20: 1903629249313577215
+      Light theme spritesheet 1_42: -4054422042750414774
+      Light theme spritesheet 1_16: 8445616339257427692
+      Light theme spritesheet 1_8: -6283244556340042521
+      Light theme spritesheet 1_38: 3193731815220806706
+      Light theme spritesheet 1_15: 5482440186110568950
+      Light theme spritesheet 1_17: 403925759948137071
+      Light theme spritesheet 1_40: -3708834208625000457
+      Light theme spritesheet 1_4: -7171646239962760034
+      Light theme spritesheet 1_27: 8651620472561409960
+      Light theme spritesheet 1_44: 3431656969669775321
+      Light theme spritesheet 1_19: 6719213290384388190
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

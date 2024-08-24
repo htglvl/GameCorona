@@ -105,7 +105,7 @@ TextureImporter:
       213: 6576796224741579178
     second: guns_33
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -125,6 +125,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -134,11 +136,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -156,9 +158,14 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -198,6 +205,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -935,6 +966,41 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      guns_16: 5357073759092374524
+      guns_28: 4489582801423173642
+      guns_25: -8176191940716846235
+      guns_18: 3496009811187771651
+      guns_1: -7349882584872989000
+      guns_32: -8073871149268614154
+      guns_11: -8589672695694742468
+      guns_15: -5021927378985479291
+      guns_21: -6959318159343397598
+      guns_23: -7957314319995723124
+      guns_24: 169359568526546329
+      guns_31: -3088355149328666976
+      guns_29: 957571850055131362
+      guns_20: 5693698057615743503
+      guns_0: 7362661061344524757
+      guns_7: -8087828725690429378
+      guns_17: -2077410496073520643
+      guns_19: 5196048043118583838
+      guns_5: -8012370926812475621
+      guns_10: -7903565074922245131
+      guns_27: -7847260546520102199
+      guns_4: -2395591618090941519
+      guns_6: 994329863909854400
+      guns_33: 6576796224741579178
+      guns_8: -1169459152763573295
+      guns_14: 3274887400127796914
+      guns_2: -3476979527478288156
+      guns_13: -8441434538785342538
+      guns_30: -8066788865452727643
+      guns_12: 1425588968670551369
+      guns_9: -3906556932855703639
+      guns_26: -5819615957231208799
+      guns_22: 5968477151311336296
+      guns_3: -9170448629031416532
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
